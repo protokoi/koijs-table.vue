@@ -1,4 +1,3 @@
-
 # @koijs/table-vue
 
 A lightweight and customizable table component for Vue 3 applications. This package allows you to render data-driven tables with ease, supporting dynamic columns and rows.
@@ -38,12 +37,12 @@ Import the `KoiTable` component and use it in your Vue application:
 </template>
 
 <script setup lang="ts">
-import { KoiTable } from "@koijs/table-vue";
+import KoiTable from "@koijs/table-vue";
 import "@koijs/table-vue/dist/table-vue.css";
 
-const columns = ['id', 'name', 'age', 'country'];
+const columns = ["id", "name", "age", "country"];
 
-const data  = [
+const data = [
   { id: 1, name: "Atlas", age: 25, country: "Turkey" },
   { id: 2, name: "Noah", age: 30, country: "Netherlands" },
   { id: 3, name: "John", age: 28, country: "USA" },
@@ -59,20 +58,21 @@ const data  = [
 
 ## Props
 
-| Prop     | Type           | Required | Default | Description                   |
-|----------|----------------|----------|---------|-------------------------------|
-| `columns`| `Array`        | Yes      | `[]`    | Defines table columns. Each column should have a `key` and `title`. |
-| `data`   | `Array`        | Yes      | `[]`    | Array of objects representing rows in the table. |
+| Prop      | Type    | Required | Default | Description                                                         |
+| --------- | ------- | -------- | ------- | ------------------------------------------------------------------- |
+| `columns` | `Array` | Yes      | `[]`    | Defines table columns. Each column should have a `key` and `title`. |
+| `data`    | `Array` | Yes      | `[]`    | Array of objects representing rows in the table.                    |
 
 ---
 
+<!-- 
 ## Example with Custom Styles
 
 You can apply custom styles by overriding the default CSS classes:
 
 ```css
-...
-```
+``` 
+-->
 
 ---
 
@@ -81,11 +81,13 @@ You can apply custom styles by overriding the default CSS classes:
 To contribute or test locally:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/atlasyigitaydin/koijs-table
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```

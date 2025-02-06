@@ -12,6 +12,7 @@ export default defineConfig({
     rollupOptions: {
       external: ["vue"],
       output: {
+        assetFileNames: "table-vue.css",
         globals: {
           vue: "Vue",
         },

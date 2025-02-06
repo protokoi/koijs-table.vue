@@ -6,11 +6,10 @@
   "module": "dist/koi-table.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
-    "dist",
-    "src/koi-table.css",
-    "src/koi-table.ts",
-    "index.ts"
-  ],
+  "dist",
+  "README.md",
+  "package.json"
+],
  "scripts": {
   "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
   "build": "vite build && npm run build:types"

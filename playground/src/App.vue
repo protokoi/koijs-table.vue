@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // import KoiTable from '../../src/koi-table.vue'
-import KoiTable from '@koijs/table-vue'
+import KoiTablee from '@koijs/table-vue'
+import '@koijs/table-vue/dist/table-vue.css';
 
 const columns = ['id', 'name', 'age', 'country']
-
 const data = [
   { id: 1, name: "Ali", age: 25, country: "Turkey" },
   { id: 2, name: "Veli", age: 30, country: "Turkey" },
@@ -19,5 +19,5 @@ const data = [
 </script>
 
 <template>
-  <KoiTable :columns="columns" :data="data" />
+  <KoiTablee :columns="columns" :data="data" />
 </template>

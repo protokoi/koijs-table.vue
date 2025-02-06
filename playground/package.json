@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@koijs/table-vue": "file:../koijs-table-vue-0.0.3.tgz",
+    "@koijs/table-vue": "file:../koijs-table-vue-0.0.4.tgz",
     "vue": "^3.5.13"
   },
   "devDependencies": {

@@ -43,11 +43,14 @@ import "@koijs/table-vue/dist/table-vue.css";
 
 const columns = ['id', 'name', 'age', 'country'];
 
-const data = [
-  { id: 1, name: "Ali", age: 25, country: "Turkey" },
-  { id: 2, name: "Veli", age: 30, country: "Turkey" },
+const data  = [
+  { id: 1, name: "Atlas", age: 25, country: "Turkey" },
+  { id: 2, name: "Noah", age: 30, country: "Netherlands" },
   { id: 3, name: "John", age: 28, country: "USA" },
   { id: 4, name: "Emma", age: 22, country: "Canada" },
+  { id: 5, name: "Liam", age: 35, country: "Australia" },
+  { id: 6, name: "Sophia", age: 27, country: "UK" },
+  { id: 7, name: "Lucas", age: 31, country: "Germany" },
 ];
 </script>
 ```
@@ -68,19 +71,7 @@ const data = [
 You can apply custom styles by overriding the default CSS classes:
 
 ```css
-/* Example of custom styles */
-table {
-  border: 2px solid #000;
-}
-
-th {
-  background-color: #4caf50;
-  color: white;
-}
-
-td {
-  padding: 10px;
-}
+...
 ```
 
 ---
@@ -91,7 +82,7 @@ To contribute or test locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/koijs-table-vue.git
+   git clone https://github.com/atlasyigitaydin/koijs-table
    ```
 
 2. Install dependencies:

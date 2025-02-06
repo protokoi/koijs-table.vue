@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   build: {
+    cssCodeSplit: false,
     lib: {
       entry: "src/koi-table.vue",
       name: "KoiTable",
@@ -12,7 +13,6 @@ export default defineConfig({
     rollupOptions: {
       external: ["vue"],
       output: {
-        assetFileNames: "table-vue.css",
         globals: {
           vue: "Vue",
         },

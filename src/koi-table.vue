@@ -1,0 +1,105 @@
+<template>
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th v-for="(col, index) in props.columns" :key="index" class="animated-header">
+            {{ col }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(row, index) in props.data"
+          :key="index"
+          class="animated-row"
+        >
+          <td v-for="col in props.columns" :key="col">{{ row[col] || "-" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  columns: [];
+  data: [];
+}>();
+</script>
+
+<style>
+.table-container {
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  position: relative;
+}
+
+.custom-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-table th:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table tr {
+  transition: background-color 0.3s ease;
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.custom-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+.animated-row {
+  animation: fadeIn 0.5s ease;
+}
+
+.animated-header {
+  animation: fadeInHeader 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

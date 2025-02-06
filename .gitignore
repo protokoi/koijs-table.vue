@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.log
+*.lock
+.env
+
+playground/node_modules/
+playground/dist/

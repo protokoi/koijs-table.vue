@@ -1,0 +1,14 @@
+{
+  "name": "@koijs/table-vue",
+  "version": "1.0.0",
+  "description": "A lightweight table component for Vue",
+  "main": "index.js",
+  "files": ["src", "index.js"],
+  "dependencies": {
+    "vue": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {}
+}

@@ -1,5 +1,6 @@
-<script setup>
-import KoijsTable from '../../src/koi-table.vue'
+<script setup lang="ts">
+// import KoijsTable from '../../src/koi-table.vue'
+import KoijsTable from '@koijs/table-vue'
 
 const columns = ["ID", "Name", "Age"];
 const data = [

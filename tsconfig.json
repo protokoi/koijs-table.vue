@@ -1,17 +1,17 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./dist/types",
-    "emitDeclarationOnly": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "target": "ESNext",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": ["node"],
-    "jsx": "preserve"
-  },
-  "include": ["src/koi-table.vue"],
-  "exclude": ["node_modules", "dist"]
+"compilerOptions": {
+  "declaration": true,
+  "declarationDir": "./dist/types",
+  "outDir": "./dist",
+  "emitDeclarationOnly": false,
+  "module": "ESNext",
+  "target": "ESNext",
+  "strict": true,
+  "esModuleInterop": true,
+  "skipLibCheck": true,
+  "types": ["node"],
+  "jsx": "preserve"
+},
+"include": ["src/**/*", "index.ts"],
+"exclude": ["node_modules", "dist"]
 }

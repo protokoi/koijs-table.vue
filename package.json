@@ -2,16 +2,16 @@
   "name": "@koijs/table-vue",
   "version": "0.0.3",
   "description": "A lightweight table component for Vue",
-  "main": "index.js",
+  "main": "dist/koi-table.es.js",
+  "module": "dist/koi-table.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
-    "src",
     "dist",
-    "index.js"
+    "index.ts"
   ],
-  "scripts": {
-    "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
-    "build": "vue-tsc --noEmit && vite build"
+ "scripts": {
+  "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
+  "build": "vite build && npm run build:types"
   },
   "dependencies": {
     "vue": "^3.0.0"

@@ -15,4 +15,3 @@ const data = [
     <KoijsTable :columns="columns" :data="data" />
   </div>
 </template>
-

@@ -2,8 +2,12 @@
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "node",
+    "paths": {
+      "#koi/*": ["src/*"]
+    },
     "types": ["node"],
     "strict": true,
     "declaration": true,

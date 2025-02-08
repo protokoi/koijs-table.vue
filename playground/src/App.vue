@@ -1,20 +1,9 @@
 <script setup lang="ts">
-import type {
-  // Column,
-  Row,
-} from '../../src/types'
-// import KoiTable from '@koijs/table-vue'
+import KoiTable from '@koijs/table-vue'
+import type { Row } from '@koijs/table-vue/dist/types/src/types';
 import { onMounted, ref } from 'vue'
-import KoiTable from '../../src/koi-table.vue'
-// import '@koijs/table-vue/dist/table-vue.css'
 
 const rows = ref<Row[]>()
-// const columns: Column[] = [
-//   { key: 'action', label: 'Aksiyonlar' },
-//   { key: 'id', label: 'ID' },
-//   { key: 'name', label: 'İsim' },
-//   { key: 'email', label: 'E-Mail' },
-// ]
 
 onMounted(async () => {
   await fetch('https://api.escuelajs.co/api/v1/users')

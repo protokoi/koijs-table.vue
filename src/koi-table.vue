@@ -28,11 +28,11 @@ const computedColumns = computed(() => {
 </script>
 
 <template>
-  <div class="table-container">
-    <table class="custom-table">
-      <thead>
-        <tr>
-          <th v-for="col in computedColumns" :key="col.key">
+  <div class="w-full">
+    <table class="custom-table w-full">
+      <thead class="bg-gray-200">
+        <tr class="font-bold">
+          <th v-for="col in computedColumns" :key="col.key" class="border">
             {{ col.label }}
           </th>
         </tr>
@@ -51,5 +51,5 @@ const computedColumns = computed(() => {
 </template>
 
 <style>
-@import './main.css';
+@import "tailwindcss";
 </style>

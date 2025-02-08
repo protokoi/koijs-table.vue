@@ -3,52 +3,40 @@ import type {
   Column,
   Row,
 } from '../../src/types'
+// import KoiTable from '@koijs/table-vue'
 import { onMounted, ref } from 'vue'
 import KoiTable from '../../src/koi-table.vue'
-// import KoiTable from '@koijs/table-vue'
-// import "@koijs/table-vue/dist/table-vue.css";
-
-const columns: Column[] = [
-  {
-    key: 'id',
-    label: 'ID',
-  },
-  {
-    key: 'firstName',
-    label: 'Ad Soyad',
-  },
-  {
-    key: 'age',
-    label: 'Yaş',
-  },
-  {
-    key: 'email',
-    label: 'E-Mail',
-  },
-  {
-    key: 'phone',
-    label: 'Telefon',
-  },
-]
+// import '@koijs/table-vue/dist/table-vue.css'
 
 const rows = ref<Row[]>()
+const columns: Column[] = [
+  { key: 'action', label: 'Aksiyonlar' },
+  { key: 'id', label: 'ID' },
+  { key: 'name', label: 'İsim' },
+  { key: 'email', label: 'E-Mail' },
+]
 
 onMounted(async () => {
-  await fetch('https://dummyjson.com/users')
+  await fetch('https://api.escuelajs.co/api/v1/users')
     .then(res => res.json())
     .then((data) => {
-      rows.value = data.users
+      rows.value = data
     })
 })
 </script>
 
 <template>
-  <div class="fixed top-0 left-0">
-    <div class="m-2">
-      <KoiTable
-        :rows="rows ?? []"
-        :columns="columns"
-      />
-    </div>
-  </div>
+  <KoiTable
+    :rows="rows ?? []"
+    :columns
+  >
+    <template #action-data="{ data }">
+      {{ data.role }}
+    </template>
+    <!-- <template #avatar-data="{ data }">
+      <div class="w-full flex justify-center">
+        <img class="h-12 w-12 rounded-full" :src="data.avatar" alt="avatar">
+      </div>
+    </template> -->
+  </KoiTable>
 </template>

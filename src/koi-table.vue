@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Column, Row } from './types'
 import { computed } from 'vue'
+import { getData, keyConvertLabel } from './utils'
 
 const props = defineProps<{
   rows: Row[]
@@ -8,19 +9,21 @@ const props = defineProps<{
 }>()
 
 const computedColumns = computed(() => {
-  if (!props.rows.length)
+  if (!props.rows.length) {
     return []
+  }
 
   if (props.columns) {
-    return props.columns
-  }
-
-  else {
-    return Object.keys(props.rows[0]).map(key => ({
-      key,
-      label: key.charAt(0).toUpperCase() + key.slice(1),
+    return props.columns.map(col => ({
+      ...col,
+      label: col.label || keyConvertLabel(col.key),
     }))
   }
+
+  return Object.keys(props.rows[0]).map(key => ({
+    key,
+    label: keyConvertLabel(key),
+  }))
 })
 </script>
 
@@ -37,7 +40,9 @@ const computedColumns = computed(() => {
       <tbody>
         <tr v-for="(row, rowIndex) in props.rows" :key="rowIndex">
           <td v-for="col in computedColumns" :key="col.key">
-            {{ typeof row[col.key] === 'object' ? '[Object]' : row[col.key] }}
+            <slot :name="`${col.key}-data`" :data="row">
+              {{ getData(row, col) }}
+            </slot>
           </td>
         </tr>
       </tbody>

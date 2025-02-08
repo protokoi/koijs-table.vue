@@ -1,17 +1,18 @@
 {
-"compilerOptions": {
-  "declaration": true,
-  "declarationDir": "./dist/types",
-  "outDir": "./dist",
-  "emitDeclarationOnly": false,
-  "module": "ESNext",
-  "target": "ESNext",
-  "strict": true,
-  "esModuleInterop": true,
-  "skipLibCheck": true,
-  "types": ["node"],
-  "jsx": "preserve"
-},
-"include": ["src/**/*", "index.ts"],
-"exclude": ["node_modules", "dist"]
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "outDir": "./dist",
+    "emitDeclarationOnly": false,
+    "module": "ESNext",
+    "target": "ESNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*", "index.ts"],
+  "exclude": ["node_modules", "dist"]
 }

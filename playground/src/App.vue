@@ -1,9 +1,26 @@
 <script setup lang="ts">
-// import KoiTable from '../../src/koi-table.vue'
-import KoiTable from '@koijs/table-vue'
+// import KoiTable from '@koijs/table-vue';
+import KoiTable from '../../src/koi-table.vue'
+import type { 
+  Column, 
+  Row 
+} from '../../src/types';
 
-const columns = ['id', 'name', 'age', 'country']
-const data  = [
+const columns: Column[] = [
+  {
+    key: "id",
+  },
+  {
+    key: "name",
+  },
+  {
+    key: "age",
+  },
+  {
+    key: "country",
+  }
+]
+const rows: Row[] = [
   { id: 1, name: "Ali", age: 25, country: "Turkey" },
   { id: 2, name: "Veli", age: 30, country: "Turkey" },
   { id: 3, name: "John", age: 28, country: "USA" },
@@ -18,5 +35,8 @@ const data  = [
 </script>
 
 <template>
-  <KoiTable :columns="columns" :data="data" />
+  <KoiTable 
+  :columns 
+    :rows
+   />
 </template>

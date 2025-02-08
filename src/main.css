@@ -15,6 +15,7 @@
     border: 1px solid #ddd;
     padding: 8px;
     position: relative;
+    white-space: nowrap; /* todo: prop */ 
   }
   
   .custom-table th {

@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "types": ["node"],
+    "strict": true,
     "declaration": true,
     "declarationDir": "./dist/types",
-    "outDir": "./dist",
     "emitDeclarationOnly": false,
-    "module": "ESNext",
-    "target": "ESNext",
-    "strict": true,
+    "outDir": "./dist",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": ["node"],
-    "jsx": "preserve",
-    "moduleResolution": "node"
+    "skipLibCheck": true
   },
   "include": ["src/**/*", "index.ts"],
   "exclude": ["node_modules", "dist"]

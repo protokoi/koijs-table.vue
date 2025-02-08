@@ -1,5 +1,8 @@
-export type Row = object 
+export interface Row {
+  [key: string]: any
+}
 
 export interface Column {
-    key: string
+  key: string
+  label?: string
 }

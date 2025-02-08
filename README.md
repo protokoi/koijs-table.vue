@@ -29,29 +29,29 @@ npm install @koijs/table-vue
 Import the `KoiTable` component and use it in your Vue application:
 
 ```vue
+<script setup lang="ts">
+import KoiTable from '@koijs/table-vue'
+import '@koijs/table-vue/dist/table-vue.css'
+
+const columns = ['id', 'name', 'age', 'country']
+
+const data = [
+  { id: 1, name: 'Atlas', age: 25, country: 'Turkey' },
+  { id: 2, name: 'Noah', age: 30, country: 'Netherlands' },
+  { id: 3, name: 'John', age: 28, country: 'USA' },
+  { id: 4, name: 'Emma', age: 22, country: 'Canada' },
+  { id: 5, name: 'Liam', age: 35, country: 'Australia' },
+  { id: 6, name: 'Sophia', age: 27, country: 'UK' },
+  { id: 7, name: 'Lucas', age: 31, country: 'Germany' },
+]
+</script>
+
 <template>
   <div>
     <h1>Koi Table Example</h1>
     <KoiTable :columns="columns" :data="data" />
   </div>
 </template>
-
-<script setup lang="ts">
-import KoiTable from "@koijs/table-vue";
-import "@koijs/table-vue/dist/table-vue.css";
-
-const columns = ["id", "name", "age", "country"];
-
-const data = [
-  { id: 1, name: "Atlas", age: 25, country: "Turkey" },
-  { id: 2, name: "Noah", age: 30, country: "Netherlands" },
-  { id: 3, name: "John", age: 28, country: "USA" },
-  { id: 4, name: "Emma", age: 22, country: "Canada" },
-  { id: 5, name: "Liam", age: 35, country: "Australia" },
-  { id: 6, name: "Sophia", age: 27, country: "UK" },
-  { id: 7, name: "Lucas", age: 31, country: "Germany" },
-];
-</script>
 ```
 
 ---
@@ -65,13 +65,13 @@ const data = [
 
 ---
 
-<!-- 
+<!--
 ## Example with Custom Styles
 
 You can apply custom styles by overriding the default CSS classes:
 
 ```css
-``` 
+```
 -->
 
 ---

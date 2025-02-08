@@ -1,1 +1,1 @@
-export { default as KoiTable } from "./src/koi-table.vue";
+export { default as KoiTable } from './src/koi-table.vue'

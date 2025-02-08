@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@koijs/table-vue": "file:../koijs-table-vue-0.0.5.tgz",
+    "@tailwindcss/vite": "^4.0.4",
+    "tailwindcss": "^4.0.4",
     "vue": "^3.5.13"
   },
   "devDependencies": {

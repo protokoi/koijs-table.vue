@@ -7,19 +7,20 @@ const props = defineProps<{
   columns?: Column[]
 }>()
 
-const currentColumns = computed(() => {
-  if (!props.rows || props.rows.length === 0) {
+const computedColumns = computed(() => {
+  if (!props.rows.length)
     return []
-  }
 
   if (props.columns) {
     return props.columns
   }
 
-  return [...Object.keys(props.rows[0])].map(_key => ({
-    key: _key,
-    label: _key.charAt(0).toUpperCase() + _key.slice(1),
-  }))
+  else {
+    return Object.keys(props.rows[0]).map(key => ({
+      key,
+      label: key.charAt(0).toUpperCase() + key.slice(1),
+    }))
+  }
 })
 </script>
 
@@ -28,23 +29,15 @@ const currentColumns = computed(() => {
     <table class="custom-table">
       <thead>
         <tr>
-          <th
-            v-for="(col, index) in currentColumns" :key="index"
-            class="animated-header"
-          >
-            {{ props.columns
-              ? col.key.charAt(0).toUpperCase() + col.key.slice(1)
-              : col.key.charAt(0).toUpperCase() + col.key.slice(1) }}
+          <th v-for="col in computedColumns" :key="col.key">
+            {{ col.label }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="(row, index) in props.rows" :key="index"
-          class="animated-row"
-        >
-          <td v-for="(col, i) in currentColumns" :key="i">
-            {{ typeof row[col.key] !== 'object' ? row[col.key] : 'object' }}
+        <tr v-for="(row, rowIndex) in props.rows" :key="rowIndex">
+          <td v-for="col in computedColumns" :key="col.key">
+            {{ typeof row[col.key] === 'object' ? '[Object]' : row[col.key] }}
           </td>
         </tr>
       </tbody>

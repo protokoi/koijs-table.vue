@@ -10,7 +10,7 @@ import Default from './layouts/default.vue'
 const rows = ref<Row[]>()
 
 onMounted(async () => {
-  await fetch('https://dummyjson.com/users?limit=20')
+  await fetch('https://dummyjson.com/users?limit=40')
     .then(res => res.json())
     .then((data) => {
       rows.value = data.users
@@ -24,8 +24,8 @@ onMounted(async () => {
       class="h-full"
       :rows="rows ?? []"
       :sticky="true"
-      :stripped-rows="true"
-      :row-grapped="true"
+      :stripped-rows="false"
+      :row-grapped="false"
     >
       <!-- <template #id-header="{ column }">
         <div class="w-16 text-center">

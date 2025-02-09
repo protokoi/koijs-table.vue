@@ -24,7 +24,10 @@ const currentColumns = computed(() => {
 })
 
 const startTableScroll = ref<boolean>(false)
-const clicedRow = ref<Row>()
+const hoveredRow = ref<Row>()
+const selectedRow = ref<Row>()
+const hoveredColumn = ref<string>()
+const selectedColumn = ref<Column>()
 
 const scrollX = `
   [&::-webkit-scrollbar]:h-2
@@ -60,17 +63,21 @@ const scrollY = (`
       }"
     >
       <thead
-        class=""
+        class="select-none"
         :class="{ 'sticky top-0 ': props.sticky }"
       >
         <tr>
           <th
             v-for="col in currentColumns"
             :key="col.key"
-            class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 pr-3 pl-4 first:pl-4 last:pr-4"
+            class="text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 pr-3 pl-4 first:pl-4 last:pr-4"
             :class="{
-              'dark:bg-neutral-800/95 bg-neutral-200/95 first:rounded-l-lg lst:rounded-r-lg py-3': startTableScroll && props.sticky,
+              'dark:bg-neutral-800/95 bg-neutral-200/95 py-3': startTableScroll && props.sticky,
+              'bg-neutral-300 dark:bg-neutral-700': hoveredColumn === col.key || selectedColumn?.key === col.key,
             }"
+            @mouseenter="hoveredColumn = col.key"
+            @mouseleave="hoveredColumn = undefined"
+            @click="selectedColumn = col"
           >
             <slot :name="`${col.key}-header`" :column="col">
               {{ col.label }}
@@ -82,19 +89,25 @@ const scrollY = (`
         <tr
           v-for="(row, rowIndex) in props.rows"
           :key="rowIndex"
-          class="duration-100 hover:bg-neutral-200 hover:dark:bg-neutral-800 even:hover:bg-neutral-200 odd:hover:bg-neutral-200 dark:even:hover:bg-neutral-800 dark:odd:hover:bg-neutral-800"
+          class="hover:bg-neutral-200 hover:dark:bg-neutral-800 even:hover:bg-neutral-200 odd:hover:bg-neutral-200 dark:even:hover:bg-neutral-800 dark:odd:hover:bg-neutral-800"
           :class="{
-            'rounded-lg inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped,
-            'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950': props.strippedRows && clicedRow !== row,
-            'bg-neutral-200 dark:bg-neutral-800': clicedRow === row,
-            'even:bg-neutral-200 dark:even:bg-neutral-800 odd:bg-neutral-200 dark:odd:bg-neutral-800': props.strippedRows && clicedRow === row,
+            'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped,
+            'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950': props.strippedRows && selectedRow !== row,
+            'bg-neutral-200 dark:bg-neutral-800': selectedRow === row,
+            'even:bg-neutral-200 dark:even:bg-neutral-800 odd:bg-neutral-200 dark:odd:bg-neutral-800': props.strippedRows && selectedRow === row,
           }"
-          @click="clicedRow = row"
+          @click="selectedRow = row"
+          @mouseenter="hoveredRow = row"
+          @mouseleave="hoveredRow = undefined"
         >
           <td
             v-for="col in currentColumns"
             :key="col.key"
             class="whitespace-nowrap pl-4 text-sm py-4 first:pl-4 last:pr-4"
+            :class="{
+              'bg-neutral-200 dark:bg-neutral-800': hoveredColumn === col.key || selectedColumn?.key === col.key && !((hoveredColumn === col.key || selectedColumn?.key === col.key) && (selectedRow === row || hoveredRow === row)),
+              'bg-neutral-300 dark:bg-neutral-700': (hoveredColumn === col.key || selectedColumn?.key === col.key) && (selectedRow === row || hoveredRow === row),
+            }"
           >
             <slot :name="`${col.key}-cell`" :data="row" :column="col">
               {{ getData(row, col) }}

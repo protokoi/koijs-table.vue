@@ -25,6 +25,12 @@ const isSidebarOpen = ref(false)
 const font = ref<boolean>(true)
 </script>
 
+<!--
+fonts:
+  rubik
+  doto
+-->
+
 <template>
   <div
     :class="{

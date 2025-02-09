@@ -23,9 +23,9 @@ onMounted(async () => {
     <KoiTable
       class="h-full"
       :rows="rows ?? []"
-      :sticky="true"
-      :stripped-rows="true"
-      :row-grapped="true"
+      :sticky="false"
+      :stripped-rows="false"
+      :row-grapped="false"
     >
       <!-- <template #id-header="{ column }">
         <div class="w-16 text-center">

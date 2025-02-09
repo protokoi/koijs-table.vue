@@ -6,12 +6,15 @@
 - [⚠️] Tiplerin paketten '#koi/types' olarak importlanmama sorunu giderilecek.
 
 ## Özellik Geliştirmeleri
-- [☕︎] Temel tasarım.
+- [✅] Temel tasarım.
 - [✅] Sticky prop.
 - [✅] Stripped Rows prop.
 - [ ] Playground sayfasında simülasyon layoutlar yapılacak.
 - [ ] Playground sayfasında simülasyon yazı tipleri yapılacak.
 - [ ] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
+- [ ] Satır Çizgileri
+- [ ] Sütun Çizgileri
+- [ ] Hover anında satırın belirginliğinin arttırılması.
 - [ ] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
 - [✅] `header template` desteği eklenecek.
 - [ ] İsim bulamadığım bu column prop'u eklenecek:
@@ -21,6 +24,7 @@
 ## Eklenebilecek Geliştirmeler
 - [ ] Column düzenleme (dinamik kolon ekleme/çıkarma) desteği eklenebilir.
 - [ ] Pagination.
+- [ ] ctrl tuşuna basılı tutularak bir hücreye tıklandığında hücre içindeki verinin kopyalanması.
 - [ ] Server-side pagination.
 - [ ] Sıralama ve filtreleme.
 - [ ] Hazır Koi temaları.

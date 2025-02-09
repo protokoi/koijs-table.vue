@@ -26,7 +26,7 @@ const currentColumns = computed(() => {
 const startTableScroll = ref<boolean>(false)
 
 const scrollX = `
-  [&::-webkit-scrollbar]:h-1
+  [&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:rounded-full
   [&::-webkit-scrollbar-track]:bg-neutral-100
   [&::-webkit-scrollbar-thumb]:rounded-full
@@ -36,7 +36,7 @@ const scrollX = `
 `
 
 const scrollY = (`
-  [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:rounded-full
   [&::-webkit-scrollbar-track]:bg-neutral-100
   [&::-webkit-scrollbar-thumb]:rounded-full
@@ -66,9 +66,9 @@ const scrollY = (`
           <th
             v-for="col in currentColumns"
             :key="col.key"
-            class="duration-300 text-left text-md font-normal dark:text-neutral-200 text-neutral-700 whitespace-nowrap pr-3 pl-2 first:pl-4 last:pr-4"
+            class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap pr-3 pl-4 first:pl-4 last:pr-4"
             :class="{
-              'bg-neutral-800 first:rounded-l-lg lst:rounded-r-lg py-2': startTableScroll && props.sticky,
+              'dark:bg-neutral-800/90 bg-neutral-200/90 first:rounded-l-lg lst:rounded-r-lg py-3': startTableScroll && props.sticky,
             }"
           >
             <slot :name="`${col.key}-header`" :column="col">
@@ -89,7 +89,7 @@ const scrollY = (`
           <td
             v-for="col in currentColumns"
             :key="col.key"
-            class="whitespace-nowrap pl-2 text-sm py-4 first:pl-4 last:pr-4"
+            class="whitespace-nowrap pl-4 text-sm py-6 first:pl-4 last:pr-4"
           >
             <slot :name="`${col.key}-cell`" :data="row" :column="col">
               {{ getData(row, col) }}

@@ -52,7 +52,7 @@ const scrollY = (`
 
 <template>
   <div
-    class="relative overflow-x-auto pr-1"
+    class="relative overflow-x-auto pr-1 rounded-lg"
     :class="[scrollX, scrollY]"
     @scroll="(event) => startTableScroll = handleScroll(event)"
   >
@@ -70,7 +70,7 @@ const scrollY = (`
           <th
             v-for="col in currentColumns"
             :key="col.key"
-            class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 pr-3 pl-4 first:pl-4 last:pr-4"
+            class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 px-2 first:pl-4 last:pr-4"
             :class="{
               'dark:bg-neutral-800/95 bg-neutral-200/95 py-3 first:rounded-l-lg last:rounded-r-lg': startTableScroll && props.sticky,
               'bg-neutral-300 dark:bg-neutral-700': hoveredColumnKey === col.key || selectedColumnKey === col.key,
@@ -89,7 +89,7 @@ const scrollY = (`
         <tr
           v-for="(row, rowIndex) in props.rows"
           :key="rowIndex"
-          class="hover:bg-neutral-200 hover:dark:bg-neutral-800 even:hover:bg-neutral-200 odd:hover:bg-neutral-200 dark:even:hover:bg-neutral-800 dark:odd:hover:bg-neutral-800"
+          class="duration-300 hover:bg-neutral-200 hover:dark:bg-neutral-800 even:hover:bg-neutral-200 odd:hover:bg-neutral-200 dark:even:hover:bg-neutral-800 dark:odd:hover:bg-neutral-800"
           :class="{
             'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped,
             'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950': props.strippedRows && selectedRow !== row,
@@ -103,7 +103,7 @@ const scrollY = (`
           <td
             v-for="col in currentColumns"
             :key="col.key"
-            class="pl-4 text-sm py-4 first:pl-4 last:pr-4"
+            class="duration-300 px-2 text-sm py-4 first:pl-4 last:pr-4"
             :class="{
               'bg-neutral-200 dark:bg-neutral-800': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && !((hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row)),
               'bg-neutral-300 dark:bg-neutral-700': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row),

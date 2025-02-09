@@ -10,10 +10,10 @@ import Default from './layouts/default.vue'
 const rows = ref<Row[]>()
 
 onMounted(async () => {
-  await fetch('https://dummyjson.com/users?limit=40')
+  await fetch('https://api.escuelajs.co/api/v1/products')
     .then(res => res.json())
     .then((data) => {
-      rows.value = data.users
+      rows.value = data
     })
 })
 </script>
@@ -31,15 +31,15 @@ onMounted(async () => {
         <div class="w-16 text-center">
           {{ `✨${column.label}` }}
         </div>
-      </template> -->
+      </template>
 
-      <!-- <template #id-cell="{ data }">
+      <template #id-cell="{ data }">
         <div class="text-center">
           {{ data.id }}
         </div>
-      </template> -->
+      </template>
 
-      <!-- <template #image-cell="{ data }">
+      <template #image-cell="{ data }">
         <img class="h-8" :src="data.image">
       </template> -->
     </KoiTable>

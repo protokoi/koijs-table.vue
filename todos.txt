@@ -11,12 +11,12 @@
 - [✅] Stripped Rows prop.
 - [ ] Playground sayfasında simülasyon layoutlar yapılacak.
 - [ ] Playground sayfasında simülasyon yazı tipleri yapılacak.
-- [ ] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
+- [✅] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
 - [ ] Satır Çizgileri
 - [ ] Sütun Çizgileri
-- [ ] Hover anında satırın belirginliğinin arttırılması.
-- [ ] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
-- [ ] Hover satır ve sütunların belirginleştirilmesi.
+- [✅] Hover anında satırın belirginliğinin arttırılması.
+- [✅] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
+- [✅] Hover satır ve sütunların kesişiminin belirginleştirilmesi.
 - [✅] `header template` desteği eklenecek.
 - [ ] İsim bulamadığım bu column prop'u eklenecek:
   - Bu prop aktifken, sadece belirtilen kolonlar varsayılan kolonların üzerine binecek.
@@ -28,6 +28,7 @@
 - [ ] ctrl tuşuna basılı tutularak bir hücreye tıklandığında hücre içindeki verinin kopyalanması.
 - [ ] Server-side pagination.
 - [ ] Sıralama ve filtreleme.
+- [ ] Girilen değerler arası toplu seçim.
 - [ ] Hazır Koi temaları.
 
 

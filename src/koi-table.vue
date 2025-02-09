@@ -26,14 +26,14 @@ const currentColumns = computed(() => {
 const startTableScroll = ref<boolean>(false)
 const hoveredRow = ref<Row>()
 const selectedRow = ref<Row>()
-const hoveredColumn = ref<string>()
-const selectedColumn = ref<Column>()
+const hoveredColumnKey = ref<string>()
+const selectedColumnKey = ref<string>()
 
 const scrollX = `
   [&::-webkit-scrollbar]:h-2
-  [&::-webkit-scrollbar-track]:rounded-none
+  [&::-webkit-scrollbar-track]:rounded-lg
   [&::-webkit-scrollbar-track]:bg-neutral-100
-  [&::-webkit-scrollbar-thumb]:rounded-none
+  [&::-webkit-scrollbar-thumb]:rounded-lg
   [&::-webkit-scrollbar-thumb]:bg-neutral-300
   dark:[&::-webkit-scrollbar-track]:bg-neutral-800
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
@@ -41,9 +41,9 @@ const scrollX = `
 
 const scrollY = (`
   [&::-webkit-scrollbar]:w-2
-  [&::-webkit-scrollbar-track]:rounded-none
+  [&::-webkit-scrollbar-track]:rounded-lg
   [&::-webkit-scrollbar-track]:bg-neutral-100
-  [&::-webkit-scrollbar-thumb]:rounded-none
+  [&::-webkit-scrollbar-thumb]:rounded-lg
   [&::-webkit-scrollbar-thumb]:bg-neutral-300
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
@@ -52,7 +52,7 @@ const scrollY = (`
 
 <template>
   <div
-    class="relative overflow-x-auto"
+    class="relative overflow-x-auto pr-1"
     :class="[scrollX, scrollY]"
     @scroll="(event) => startTableScroll = handleScroll(event)"
   >
@@ -70,14 +70,14 @@ const scrollY = (`
           <th
             v-for="col in currentColumns"
             :key="col.key"
-            class="text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 pr-3 pl-4 first:pl-4 last:pr-4"
+            class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 pr-3 pl-4 first:pl-4 last:pr-4"
             :class="{
-              'dark:bg-neutral-800/95 bg-neutral-200/95 py-3': startTableScroll && props.sticky,
-              'bg-neutral-300 dark:bg-neutral-700': hoveredColumn === col.key || selectedColumn?.key === col.key,
+              'dark:bg-neutral-800/95 bg-neutral-200/95 py-3 first:rounded-l-lg last:rounded-r-lg': startTableScroll && props.sticky,
+              'bg-neutral-300 dark:bg-neutral-700': hoveredColumnKey === col.key || selectedColumnKey === col.key,
             }"
-            @mouseenter="hoveredColumn = col.key"
-            @mouseleave="hoveredColumn = undefined"
-            @click="selectedColumn = col"
+            @mouseenter="hoveredColumnKey = col.key"
+            @mouseleave="hoveredColumnKey = undefined"
+            @click="selectedColumnKey = selectedColumnKey === col.key ? undefined : col.key"
           >
             <slot :name="`${col.key}-header`" :column="col">
               {{ col.label }}
@@ -96,17 +96,17 @@ const scrollY = (`
             'bg-neutral-200 dark:bg-neutral-800': selectedRow === row,
             'even:bg-neutral-200 dark:even:bg-neutral-800 odd:bg-neutral-200 dark:odd:bg-neutral-800': props.strippedRows && selectedRow === row,
           }"
-          @click="selectedRow = row"
+          @click="selectedRow = selectedRow === row ? undefined : row"
           @mouseenter="hoveredRow = row"
           @mouseleave="hoveredRow = undefined"
         >
           <td
             v-for="col in currentColumns"
             :key="col.key"
-            class="whitespace-nowrap pl-4 text-sm py-4 first:pl-4 last:pr-4"
+            class="pl-4 text-sm py-4 first:pl-4 last:pr-4"
             :class="{
-              'bg-neutral-200 dark:bg-neutral-800': hoveredColumn === col.key || selectedColumn?.key === col.key && !((hoveredColumn === col.key || selectedColumn?.key === col.key) && (selectedRow === row || hoveredRow === row)),
-              'bg-neutral-300 dark:bg-neutral-700': (hoveredColumn === col.key || selectedColumn?.key === col.key) && (selectedRow === row || hoveredRow === row),
+              'bg-neutral-200 dark:bg-neutral-800': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && !((hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row)),
+              'bg-neutral-300 dark:bg-neutral-700': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row),
             }"
           >
             <slot :name="`${col.key}-cell`" :data="row" :column="col">
@@ -121,4 +121,7 @@ const scrollY = (`
 
 <style>
 @import "tailwindcss";
+::-webkit-scrollbar-corner {
+  background-color: #00000000;
+}
 </style>

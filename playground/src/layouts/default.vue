@@ -117,7 +117,7 @@ fonts:
         </div>
       </header>
 
-      <main class="overflow-hidden flex-1 p-6 bg-neutral-50 dark:bg-neutral-950">
+      <main class="overflow-hidden flex p-6 bg-neutral-50 dark:bg-neutral-950">
         <slot />
       </main>
     </div>

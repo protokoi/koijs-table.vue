@@ -1,6 +1,6 @@
 {
   "name": "@koijs/table-vue",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A lightweight table component for Vue",
   "main": "dist/koi-table.es.js",
   "module": "dist/koi-table.es.js",

@@ -12,24 +12,32 @@
 - [ ] Playground sayfasında simülasyon layoutlar yapılacak.
 - [ ] Playground sayfasında simülasyon yazı tipleri yapılacak.
 - [✅] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
-- [✅] Satır Çizgileri
-- [❌] Sütun Çizgileri
+- [✅] Satır Çizgileri.
+- [❌] Sütun Çizgileri.
+- [ ] Tasarım bütünlüğünü bozan rounded hatası giderilecek.
 - [✅] Hover anında satırın belirginliğinin arttırılması.
 - [✅] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
 - [✅] Hover satır ve sütunların kesişiminin belirginleştirilmesi.
 - [✅] `header template` desteği eklenecek.
+- [✅] Seçilen verinin componentten dışarıya emit ile aktarılması sağlanacak.
 - [ ] İsim bulamadığım bu column prop'u eklenecek:
   - Bu prop aktifken, sadece belirtilen kolonlar varsayılan kolonların üzerine binecek.
 - [ ] Koi renk seçeneği.
 - [ ] Tablo tema seçeneği.
+- [ ] class' lar için anlaşılabilirliği arttıracak bir yapı oluşturulacak.
 
-## Eklenebilecek Geliştirmeler
+## Kod Dışı Yapılacaklar
+- [ ] Sandbox proje hazırlanacak.
+- [ ] README yazılacak.
+- [ ] Döküman sayfası hazırlanacak.
+
+## Eklenebilecek Geliştirmeler (Yapı güncellemesi gerektiren geliştirmeler)
 - [ ] Column düzenleme (dinamik kolon ekleme/çıkarma) desteği eklenebilir.
 - [ ] Pagination.
+- [ ] Obje ve array tiplerinde otomatik sunumlar.
 - [ ] Server-side pagination.
 - [ ] Sıralama ve filtreleme.
 - [ ] Girilen değerler arası toplu seçim.
-- [ ] Hazır Koi temaları.
 - [ ] Klavye etkileşimleri. 
   - 'ctrl' tuşuna basılı tutularak bir hücreye tıklandığında hücre içindeki verinin kopyalanması
 
@@ -65,8 +73,8 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣀⠐⢏⣻⣿⣿⣿⣿⣿⣿⣷⣶⣤⣄⡒⢄⣈⣀⠄⡈⢀⣥⣾⣿⣿⣿⣿⣿⣿⣿⣿⢟⠟⠁⠀⡌⠸⠉⠀⠀⠀⠀⠀⠀⠀⠀⣹⡂⣺⠁⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠩⠈⠘⠻⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣷⣣⣼⣾⣿⣿⣿⣿⣿⣿⣿⡿⡻⠋⠉⠀⠀⠠⢂⠊⠀⠀⠂⠀⠀⠀⠀⠀⠀⠈⠁⠉⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⢀⣈⡀⠀⠢⠀⡖⠞⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠛⠋⡑⠀⠁⠀⠀⠀⠀⠀⠁⡀⢀⠂⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠍⠝⠡⠞⠛⣋⡊⡩⣿⣿⢿⣟⣿⠿⡿⢛⠍⣣⠘⣠⠀⠀⠁⠀⠠⢤⠁⣆⠉⠀⠁⠀⠀⠀⠀⢈⠀⠀⠠⢀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡆⠠⣟⣟⡷⢌⣑⡞⣉⡤⢇⣻⢜⡏⢼⣂⠹⠀⡄⠀⠀⡀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠠⠀⠂⠁⡐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠛⢋⠁⠙⢂⣙⠤⣿⢊⠿⡐⠼⣖⣪⠤⠃⠔⡀⠀⡀⠀⠀⠀⠀⠀⡀⠀⠄⠀⠂⠀⠰⠀⠂⠀⠀⡈⢀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠖⡚
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠈⠍⠝⠡⠞⠛⣋⡊⡩⣿⣿⢿⣟⣿⠿⡿⢛⠍⣣⠘⣠⠀⠀⠁⠀⠠⢤⠁⣆⠉⠀⠁⠀⠀⠀⠀⢈⠀⠀⠠⢀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀⢀⡆⠠⣟⣟⡷⢌⣑⡞⣉⡤⢇⣻⢜⡏⢼⣂⠹⠀⡄⠀⠀⡀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠠⠀⠂⠁⡐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠄⠀⠛⢋⠁⠙⢂⣙⠤⣿⢊⠿⡐⠼⣖⣪⠤⠃⠔⡀⠀⡀⠀⠀⠀⠀⠀⡀⠀⠄⠀⠂⠀⠰⠀⠂⠀⠀⡈⢀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠖⡚
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠠⠤⣶⡿⢯⡏⠘⠀⢡⠀⡕⣣⠒⢦⠚⡊⠔⠠⢁⠀⠀⠀⠀⠀⠀⢀⠠⠀⠐⠀⠈⠀⠀⠀⠄⠠⢀⠀⠂⠀⠀⠀⠀⠀⠀⢲⣶⣓⡟⢫
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⢢⠈⣐⢂⠳⣘⠢⡙⣌⢣⢉⠂⠀⠀⠂⠀⠄⠀⢀⠠⠀⠀⠀⠀⠌⠀⠈⠀⠄⠐⠀⠠⠀⠀⠀⠀⠀⠐⢀⣀⡧⣬⢫⣭⢋

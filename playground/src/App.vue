@@ -8,26 +8,25 @@ import Default from './layouts/default.vue'
 // import Default from './layouts/default.vue'
 
 const rows = ref<Row[]>()
+const selectedRow = ref<Row>()
 
 onMounted(async () => {
-  await fetch('https://api.escuelajs.co/api/v1/products')
+  await fetch('https://dummyjson.com/users')
     .then(res => res.json())
     .then((data) => {
-      rows.value = data
+      rows.value = data.users
     })
 })
 </script>
 
 <template>
   <Default>
-    <KoiTable
-      class="h-full"
-      :rows="rows ?? []"
-      :border-x="true"
-      :sticky="true"
-      :stripped-rows="true"
-      :row-grapped="true"
-    >
+    <div class="w-full h-full flex justify-center items-center">
+      <KoiTable
+        :rows="rows ?? []"
+        class="whitespace-nowrap max-w-6/12 max-h-3/6"
+        @select:row="(nw) => selectedRow = nw"
+      >
       <!-- <template #id-header="{ column }">
         <div class="w-16 text-center">
           {{ `✨${column.label}` }}
@@ -43,6 +42,7 @@ onMounted(async () => {
       <template #image-cell="{ data }">
         <img class="h-8" :src="data.image">
       </template> -->
-    </KoiTable>
+      </KoiTable>
+    </div>
   </Default>
 </template>

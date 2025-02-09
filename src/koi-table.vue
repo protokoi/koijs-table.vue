@@ -14,11 +14,14 @@ const props = withDefaults(
   }>(),
   {
     sticky: true,
-    strippedRows: false,
+    strippedRows: true,
     rowGrapped: false,
     borderX: true,
   },
 )
+
+const emit
+= defineEmits(['select:row'])
 
 const currentColumns = computed(() => {
   if (!props.rows.length) {
@@ -61,7 +64,7 @@ const scrollY = (`
 
 <template>
   <div
-    class="relative overflow-x-auto pr-1 rounded-lg"
+    class="w-full relative overflow-x-auto pr-1 rounded-lg"
     :class="[scrollX, scrollY]"
     @scroll="(event) => startTableScroll = handleScroll(event)"
   >
@@ -81,7 +84,7 @@ const scrollY = (`
             :key="col.key"
             class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 px-2 first:pl-4 last:pr-4"
             :class="{
-              'dark:bg-neutral-800/95 bg-neutral-200/95 py-3 first:rounded-l-lg last:rounded-r-lg': startTableScroll && props.sticky,
+              'dark:bg-neutral-800/90 bg-neutral-200/90 py-3 first:rounded-l-lg last:rounded-r-lg': startTableScroll && props.sticky,
               'bg-neutral-300 dark:bg-neutral-700': hoveredColumnKey === col.key || selectedColumnKey === col.key,
             }"
             @mouseenter="hoveredColumnKey = col.key"
@@ -100,7 +103,8 @@ const scrollY = (`
           :key="rowIndex"
           class="duration-300 hover:bg-neutral-200 hover:dark:bg-neutral-800 even:hover:bg-neutral-200 odd:hover:bg-neutral-200 dark:even:hover:bg-neutral-800 dark:odd:hover:bg-neutral-800"
           :class="{
-            'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped,
+            'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped && !props.borderX,
+            'shadow': props.rowGrapped && props.borderX,
             'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950': props.strippedRows && selectedRow !== row,
             'bg-neutral-200 dark:bg-neutral-800': selectedRow === row,
             'even:bg-neutral-200 dark:even:bg-neutral-800 odd:bg-neutral-200 dark:odd:bg-neutral-800': props.strippedRows && selectedRow === row,
@@ -118,6 +122,7 @@ const scrollY = (`
               'bg-neutral-300 dark:bg-neutral-700': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row),
               'border-y border-neutral-300 dark:border-neutral-700': props.borderX,
             }"
+            @click="emit('select:row', (row as Row))"
           >
             <slot :name="`${col.key}-cell`" :data="row" :column="col">
               {{ getData(row, col) }}

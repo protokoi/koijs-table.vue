@@ -3,13 +3,22 @@ import type { Column, Row } from '#koi/types'
 import { computed, ref } from 'vue'
 import { generateColumns, getData, handleScroll, processColumns } from './utils'
 
-const props = defineProps<{
-  rows: Row[]
-  columns?: Column[]
-  sticky?: boolean
-  strippedRows?: boolean
-  rowGrapped?: boolean
-}>()
+const props = withDefaults(
+  defineProps<{
+    rows: Row[]
+    columns?: Column[]
+    sticky?: boolean
+    strippedRows?: boolean
+    rowGrapped?: boolean
+    borderX?: boolean
+  }>(),
+  {
+    sticky: true,
+    strippedRows: false,
+    rowGrapped: false,
+    borderX: true,
+  },
+)
 
 const currentColumns = computed(() => {
   if (!props.rows.length) {
@@ -107,6 +116,7 @@ const scrollY = (`
             :class="{
               'bg-neutral-200 dark:bg-neutral-800': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && !((hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row)),
               'bg-neutral-300 dark:bg-neutral-700': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row),
+              'border-y border-neutral-300 dark:border-neutral-700': props.borderX,
             }"
           >
             <slot :name="`${col.key}-cell`" :data="row" :column="col">

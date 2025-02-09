@@ -20,47 +20,51 @@ function updateTheme() {
 onMounted(() => {
   updateTheme()
 })
+const isSidebarOpen = ref(false)
 
-const isSidebarOpen = ref(true)
+const font = ref<boolean>(true)
 </script>
 
 <template>
   <div
-    class="fixed flex top-0 left-0 w-screen h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+    :class="{
+      rubik: font,
+    }"
+    class="fixed flex top-0 left-0 w-screen h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
   >
     <aside
-      class="w-[280px] h-full border-r border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 absolute duration-300 shadow-lg flex flex-col gap-4"
+      class="w-[280px] h-full border-r border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 absolute duration-300 shadow-lg flex flex-col gap-4"
       :class="{
         'left-0': isSidebarOpen,
         '-left-[280px]': !isSidebarOpen,
       }"
     >
-      <div class="p-4 h-16 font-semibold text-lg border-b border-gray-200 dark:border-gray-700">
+      <div class="p-4 h-16 font-semibold text-lg border-b border-neutral-50 dark:border-neutral-700">
         KOI APP
       </div>
       <nav class="flex-1 px-4 space-y-2">
         <a
           href="#"
-          class="block px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-300 transition-colors"
+          class="block px-4 py-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-300 transition-colors"
         >
           Dashboard
         </a>
         <a
           href="#"
-          class="block px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-300 transition-colors"
+          class="block px-4 py-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-300 transition-colors"
         >
           Settings
         </a>
         <a
           href="#"
-          class="block px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-300 transition-colors"
+          class="block px-4 py-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-300 transition-colors"
         >
           Profile
         </a>
       </nav>
-      <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+      <div class="p-4 border-t border-neutral-50 dark:border-neutral-700">
         <button
-          class="w-full px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-lg shadow transition-all"
+          class="w-full px-4 py-2 bg-neutral-50 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-300 rounded-lg shadow transition-all"
           @click="toggleTheme"
         >
           {{ theme === 'light' ? '🌞 Light Mode' : '🌚 Dark Mode' }}
@@ -72,14 +76,14 @@ const isSidebarOpen = ref(true)
       class="absolute h-full flex flex-col transition-all duration-300"
       :class="{
         'left-0 w-full': !isSidebarOpen,
-        'left-[280px] w-[calc(100%-280px)]': isSidebarOpen,
+        'left-[280px] w-[calc(50%-280px)]': isSidebarOpen,
       }"
     >
       <header
-        class="flex h-16 items-center justify-between px-4 py-3 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm"
+        class="flex h-16 items-center justify-between px-4 py-3 bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-50 dark:border-neutral-700 shadow-sm"
       >
         <button
-          class="p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 hover:dark:bg-gray-800 text-gray-900 dark:text-gray-300 rounded-lg shadow cursor-pointer"
+          class="p-2 bg-neutral-50 hover:bg-neutral-300 dark:bg-neutral-700 hover:dark:bg-neutral-900 text-neutral-950 dark:text-neutral-300 rounded-lg shadow cursor-pointer"
           @click="isSidebarOpen = !isSidebarOpen"
         >
           ☰
@@ -87,17 +91,43 @@ const isSidebarOpen = ref(true)
         <h1 class="text-xl font-bold">
           Dashboard
         </h1>
-        <button
-          class="p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-lg shadow"
-          @click="toggleTheme"
-        >
-          {{ theme === 'light' ? '🌞' : '🌚' }}
-        </button>
+        <div class="flex gap-2 items-center">
+          <button
+            class="p-2 bg-neutral-50 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-300 rounded-lg shadow"
+            @click="font = !font"
+          >
+            {{ !font ? '🔤' : '🔡' }}
+          </button>
+
+          <button
+            class="p-2 bg-neutral-50 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-300 rounded-lg shadow"
+            @click="toggleTheme"
+          >
+            {{ theme === 'light' ? '🌞' : '🌚' }}
+          </button>
+        </div>
       </header>
 
-      <main class="overflow-hidden flex-1 p-6 bg-gray-50 dark:bg-gray-900">
+      <main class="overflow-hidden flex-1 p-6 bg-neutral-50 dark:bg-neutral-950">
         <slot />
       </main>
     </div>
   </div>
 </template>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Doto&display=swap');
+
+.rubik {
+  font-family: "Rubik", serif;
+  font-optical-sizing: auto;
+}
+
+.doto {
+  font-family: "Doto", serif;
+  font-optical-sizing: auto;
+  font-variation-settings:
+    "ROND" 0;
+}
+</style>

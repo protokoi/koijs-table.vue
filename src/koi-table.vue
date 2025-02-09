@@ -1,63 +1,97 @@
 <script setup lang="ts">
 import type { Column, Row } from '#koi/types'
-import { computed } from 'vue'
-import { getData, keyConvertLabel } from './utils'
+import { computed, ref } from 'vue'
+import { generateColumns, getData, handleScroll, processColumns } from './utils'
 
 const props = defineProps<{
   rows: Row[]
   columns?: Column[]
+  sticky?: boolean
+  strippedRows?: boolean
+  rowGrapped?: boolean
 }>()
 
-const computedColumns = computed(() => {
+const currentColumns = computed(() => {
   if (!props.rows.length) {
     return []
   }
 
-  if (props.columns) {
-    return props.columns.map(col => ({
-      ...col,
-      label: col.label || keyConvertLabel(col.key),
-    }))
-  }
+  if (props.columns)
+    return processColumns(props.columns)
 
-  return Object.keys(props.rows[0]).map(key => ({
-    key,
-    label: keyConvertLabel(key),
-  }))
+  else
+    return generateColumns(props.rows)
 })
 
-const scrollUi = (`
-  [&::-webkit-scrollbar]:w-2 
-  [&::-webkit-scrollbar]:h-2 
+const startTableScroll = ref<boolean>(false)
+
+const scrollX = `
+  [&::-webkit-scrollbar]:h-1
   [&::-webkit-scrollbar-track]:rounded-full
-  [&::-webkit-scrollbar-track]:bg-gray-100
+  [&::-webkit-scrollbar-track]:bg-neutral-100
   [&::-webkit-scrollbar-thumb]:rounded-full
-  [&::-webkit-scrollbar-thumb]:bg-gray-300
-  dark:[&::-webkit-scrollbar-track]:bg-gray-700
-  dark:[&::-webkit-scrollbar-thumb]:bg-gray-500
+  [&::-webkit-scrollbar-thumb]:bg-neutral-300
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-800
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
+`
+
+const scrollY = (`
+  [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar-track]:rounded-full
+  [&::-webkit-scrollbar-track]:bg-neutral-100
+  [&::-webkit-scrollbar-thumb]:rounded-full
+  [&::-webkit-scrollbar-thumb]:bg-neutral-300
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
 `)
 </script>
 
-<!-- Todos: -->
-<!-- import { KoiTable} bugı -->
-<!-- tip dosyası entegrasyonu -->
-<!-- playground sayfa tipleri simulasyonu -->
-<!-- head template -->
-
 <template>
-  <div :class="scrollUi" class="relative h-full overflow-x-auto ring rounded-lg ring-gray-300 dark:ring-gray-700">
-    <table class="min-w-full table-fixed divide-y divide-gray-300 dark:divide-gray-700">
-      <thead class="relative">
-        <tr class="bg-gray-200 dark:bg-gray-800">
-          <th v-for="col in computedColumns" :key="col.key" class="whitespace-nowrap py-2">
-            {{ col.label }}
+  <div
+    class="relative overflow-x-auto"
+    :class="[scrollX, scrollY]"
+    @scroll="(event) => startTableScroll = handleScroll(event)"
+  >
+    <table
+      class="min-w-full table-fixed"
+      :class="{
+        'border-separate border-spacing-y-2': props.rowGrapped,
+      }"
+    >
+      <thead
+        class=""
+        :class="{ 'sticky top-0 ': props.sticky }"
+      >
+        <tr>
+          <th
+            v-for="col in currentColumns"
+            :key="col.key"
+            class="duration-300 text-left text-md font-normal dark:text-neutral-200 text-neutral-700 whitespace-nowrap pr-3 pl-2 first:pl-4 last:pr-4"
+            :class="{
+              'bg-neutral-800 first:rounded-l-lg lst:rounded-r-lg py-2': startTableScroll && props.sticky,
+            }"
+          >
+            <slot :name="`${col.key}-header`" :column="col">
+              {{ col.label }}
+            </slot>
           </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
-        <tr v-for="(row, rowIndex) in props.rows" :key="rowIndex" class="text-left rtl:text-right px-4 py-3.5 text-gray-900 dark:text-white font-semibold text-sm">
-          <td v-for="col in computedColumns" :key="col.key" class="whitespace-nowrap px-4 py-4 text-gray-500 dark:text-gray-400 text-sm">
-            <slot :name="`${col.key}-data`" :data="row">
+      <tbody>
+        <tr
+          v-for="(row, rowIndex) in props.rows"
+          :key="rowIndex"
+          :class="{
+            'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950': props.strippedRows,
+            'rounded-lg inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped,
+          }"
+        >
+          <td
+            v-for="col in currentColumns"
+            :key="col.key"
+            class="whitespace-nowrap pl-2 text-sm py-4 first:pl-4 last:pr-4"
+          >
+            <slot :name="`${col.key}-cell`" :data="row" :column="col">
               {{ getData(row, col) }}
             </slot>
           </td>

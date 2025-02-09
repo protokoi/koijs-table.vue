@@ -13,3 +13,22 @@ export function keyConvertLabel(key: string): string {
 export function getData(row: Row, column: Column): string | any {
   return typeof row[column.key] === 'object' ? '[Object]' : row[column.key]
 }
+
+export function processColumns(columns: Column[]): Column[] {
+  return columns.map(col => ({
+    ...col,
+    label: col.label || keyConvertLabel(col.key),
+  }))
+}
+
+export function generateColumns(rows: Row[]): Column[] {
+  return Object.keys(rows[0]).map(key => ({
+    key,
+    label: keyConvertLabel(key),
+  }))
+}
+
+export function handleScroll(event: Event) {
+  const target = event.target as HTMLDivElement | null
+  return target ? target.scrollTop > 50 : false
+}

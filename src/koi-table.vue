@@ -14,7 +14,7 @@ const props = withDefaults(
   }>(),
   {
     sticky: true,
-    strippedRows: true,
+    strippedRows: false,
     rowGrapped: false,
     borderX: true,
   },

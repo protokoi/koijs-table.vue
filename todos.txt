@@ -16,6 +16,7 @@
 - [ ] Sütun Çizgileri
 - [ ] Hover anında satırın belirginliğinin arttırılması.
 - [ ] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
+- [ ] Hover satır ve sütunların belirginleştirilmesi.
 - [✅] `header template` desteği eklenecek.
 - [ ] İsim bulamadığım bu column prop'u eklenecek:
   - Bu prop aktifken, sadece belirtilen kolonlar varsayılan kolonların üzerine binecek.

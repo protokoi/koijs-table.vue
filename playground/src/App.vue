@@ -10,7 +10,7 @@ import Default from './layouts/default.vue'
 const rows = ref<Row[]>()
 
 onMounted(async () => {
-  await fetch('https://dummyjson.com/users?limit=50')
+  await fetch('https://dummyjson.com/users?limit=20')
     .then(res => res.json())
     .then((data) => {
       rows.value = data.users
@@ -23,9 +23,9 @@ onMounted(async () => {
     <KoiTable
       class="h-full"
       :rows="rows ?? []"
-      :sticky="false"
-      :stripped-rows="false"
-      :row-grapped="false"
+      :sticky="true"
+      :stripped-rows="true"
+      :row-grapped="true"
     >
       <!-- <template #id-header="{ column }">
         <div class="w-16 text-center">
@@ -39,8 +39,8 @@ onMounted(async () => {
         </div>
       </template> -->
 
-    <!-- <template #image-cell="{ data }">
-        <img class="w-full" :src="data.image">
+      <!-- <template #image-cell="{ data }">
+        <img class="h-8" :src="data.image">
       </template> -->
     </KoiTable>
   </Default>

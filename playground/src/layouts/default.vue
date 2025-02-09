@@ -29,6 +29,8 @@ const font = ref<boolean>(true)
 fonts:
   rubik
   doto
+  poppins
+  playfair
 -->
 
 <template>
@@ -124,9 +126,20 @@ fonts:
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Doto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 .rubik {
   font-family: "Rubik", serif;
+  font-optical-sizing: auto;
+}
+
+.poppins {
+  font-family: "Poppins", serif;
+}
+
+.playfair {
+  font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
 }
 

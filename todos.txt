@@ -25,6 +25,7 @@
 - [ ] Koi renk seçeneği.
 - [ ] Tablo tema seçeneği.
 - [ ] class' lar için anlaşılabilirliği arttıracak bir yapı oluşturulacak.
+- [ ] Tema ayarları yapılmamış ama tailwind içeren projelerdeki tasarımda oluşan hatalar giderilecek.
 
 ## Kod Dışı Yapılacaklar
 - [ ] Sandbox proje hazırlanacak.
@@ -32,6 +33,7 @@
 - [ ] Döküman sayfası hazırlanacak.
 
 ## Eklenebilecek Geliştirmeler (Yapı güncellemesi gerektiren geliştirmeler)
+- [ ] Tailwind bağımlılığını kaldırmak için isteyenin css kullanabileceği bir yapı geliştirilebilir.
 - [ ] Column düzenleme (dinamik kolon ekleme/çıkarma) desteği eklenebilir.
 - [ ] Pagination.
 - [ ] Obje ve array tiplerinde otomatik sunumlar.

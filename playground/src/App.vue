@@ -19,15 +19,17 @@ onMounted(async () => {
 <template>
   <Default>
     <div class="w-full h-full flex justify-center items-center">
-      <div class="w-6/12 h-4/6 flex">
+      <div class="w-8/12 h-5/6 flex">
         <KoiTable
           :sticky="true"
-          :stripped-rows="false"
-          :row-grapped="false"
-          :border-x="true"
+          :stripped-rows="true"
           class="whitespace-nowrap"
           :rows="rows ?? []"
-        />
+        >
+          <template #image-cell="{ data }">
+            <img :src="data.image">
+          </template>
+        </KoiTable>
       </div>
     </div>
   </Default>

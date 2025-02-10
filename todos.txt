@@ -9,6 +9,7 @@
 - [✅] Temel tasarım.
 - [✅] Sticky prop.
 - [✅] Stripped Rows prop.
+- [ ] Columnlarda hover durumu keye göre spesifik olarak belirtilebilir.
 - [ ] Playground sayfasında simülasyon layoutlar yapılacak.
 - [ ] Playground sayfasında simülasyon yazı tipleri yapılacak.
 - [✅] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
@@ -80,3 +81,4 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠄⠀⠛⢋⠁⠙⢂⣙⠤⣿⢊⠿⡐⠼⣖⣪⠤⠃⠔⡀⠀⡀⠀⠀⠀⠀⠀⡀⠀⠄⠀⠂⠀⠰⠀⠂⠀⠀⡈⢀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠖⡚
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠠⠤⣶⡿⢯⡏⠘⠀⢡⠀⡕⣣⠒⢦⠚⡊⠔⠠⢁⠀⠀⠀⠀⠀⠀⢀⠠⠀⠐⠀⠈⠀⠀⠀⠄⠠⢀⠀⠂⠀⠀⠀⠀⠀⠀⢲⣶⣓⡟⢫
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⢢⠈⣐⢂⠳⣘⠢⡙⣌⢣⢉⠂⠀⠀⠂⠀⠄⠀⢀⠠⠀⠀⠀⠀⠌⠀⠈⠀⠄⠐⠀⠠⠀⠀⠀⠀⠀⠐⢀⣀⡧⣬⢫⣭⢋
+

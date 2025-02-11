@@ -15,7 +15,7 @@
 - [✅] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
 - [✅] Satır Çizgileri.
 - [❌] Sütun Çizgileri.
-- [ ] Tasarım bütünlüğünü bozan rounded hatası giderilecek.
+- [☕︎] Tasarım bütünlüğünü bozan rounded hatası giderilecek.
 - [✅] Hover anında satırın belirginliğinin arttırılması.
 - [✅] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
 - [✅] Hover satır ve sütunların kesişiminin belirginleştirilmesi.

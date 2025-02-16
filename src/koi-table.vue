@@ -7,7 +7,7 @@ const props = withDefaults(
   defineProps<KoiTable>(),
   {
     sticky: true,
-    zebraRows: false,
+    zebraRows: true,
     spacing: true,
     size: 'sm',
     border: () => ({
@@ -17,7 +17,7 @@ const props = withDefaults(
     }),
     mark: () => ({
       hover: {
-        row: false,
+        row: true,
         column: false,
       },
       select: {
@@ -219,7 +219,7 @@ function thisRow(row: Row | undefined): boolean {
             props.spacing
               ? props.border.horizontal
                 ? props.ui.spacing?.shadow
-                : [props.ui.spacing?.row, props.ui.spacing?.shadow]
+                : [props.ui.spacing?.row, props.ui.spacing?.shadow, props.ui.spacing?.rounded]
               : null,
             props.zebraRows ? props.ui.zebraRows : null,
             selectedRow === row

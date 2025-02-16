@@ -59,6 +59,7 @@ export interface KoiTable {
       base?: string
       row?: string
       shadow?: string
+      rounded?: string
     }
     mark?: {
       hover?: {

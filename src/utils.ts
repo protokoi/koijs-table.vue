@@ -11,8 +11,8 @@ export function keyConvertLabel(key: string): string {
 }
 
 export function getData(row: Row, column: Column): string | any {
-  return typeof row[column.key] === 'object' ? '[Object]' : row[column.key]
-  // return row[column.key]
+  // return typeof row[column.key] === 'object' ? '[Object]' : row[column.key]
+  return row[column.key]
 }
 
 export function processColumns(columns: Column[]): Column[] {

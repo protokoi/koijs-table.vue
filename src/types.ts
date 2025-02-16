@@ -14,9 +14,11 @@ export interface KoiTable {
   zebraRows?: boolean
   spacing?: boolean
   border?: {
+    body?: boolean
     horizontal?: boolean
     vertical?: boolean
   }
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   mark?: {
     hover?: {
       row?: boolean
@@ -29,6 +31,23 @@ export interface KoiTable {
     spotlight?: boolean
   }
   ui?: {
+    size?: {
+      xs?: {
+        text: string
+      }
+      sm?: {
+        text: string
+      }
+      md?: {
+        text: string
+      }
+      lg?: {
+        text: string
+      }
+      xl?: {
+        text: string
+      }
+    }
     wrapper?: string
     sticky?: {
       animation?: string
@@ -53,6 +72,7 @@ export interface KoiTable {
       spotlight?: string
     }
     border?: {
+      body?: string
       horizontal?: string
       vertical?: string
     }

@@ -8,24 +8,26 @@ const props = withDefaults(
   {
     sticky: true,
     zebraRows: false,
-    spacing: false,
+    spacing: true,
+    size: 'sm',
     border: () => ({
+      body: false,
       horizontal: false,
       vertical: false,
     }),
     mark: () => ({
       hover: {
-        row: true,
-        column: true,
+        row: false,
+        column: false,
       },
       select: {
-        row: true,
-        column: true,
+        row: false,
+        column: false,
       },
-      spotlight: true,
+      spotlight: false,
     }),
     ui: () => ({
-      wrapper: 'w-full relative overflow-x-auto pr-1 rounded-lg',
+      wrapper: 'w-full relative overflow-x-auto pr-1 rounded-lg dark:text-white text-black',
       sticky: {
         animation: 'duration-300',
         base: 'sticky top-0',
@@ -36,10 +38,29 @@ const props = withDefaults(
         base: 'border-separate border-spacing-y-2',
         row: 'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100',
         shadow: 'shadow',
+        rounded: 'rounded-lg',
       },
       border: {
+        body: 'ring ring-neutral-300 dark:ring-neutral-700',
         horizontal: 'border-y border-neutral-300 dark:border-neutral-700',
-        vertical: '',
+        vertical: 'border-x border-neutral-300 dark:border-neutral-700',
+      },
+      size: {
+        xs: {
+          text: 'text-xs',
+        },
+        sm: {
+          text: 'text-sm',
+        },
+        md: {
+          text: 'text-md',
+        },
+        lg: {
+          text: 'text-lg',
+        },
+        xl: {
+          text: 'text-xl',
+        },
       },
       mark: {
         hover: {
@@ -71,7 +92,7 @@ const props = withDefaults(
         base: 'select-none',
         tr: '',
         th: {
-          base: 'text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap',
+          base: 'text-left font-normal dark:text-neutral-200 text-neutral-800 whitespace-nowrap',
           padding: 'py-1 px-2 first:pl-4 last:pr-4',
         },
       },
@@ -82,7 +103,7 @@ const props = withDefaults(
           hover: '',
         },
         td: {
-          base: 'text-sm',
+          base: '',
           padding: 'px-2 py-4 first:pl-4 last:pr-4',
         },
       },
@@ -122,6 +143,7 @@ function thisRow(row: Row | undefined): boolean {
 <template>
   <div
     :class="[
+      props.ui.size?.[props.size]?.text,
       props.ui.scrollbar?.base,
       props.ui.scrollbar?.corner,
       props.ui.scrollbar?.thumb?.base,
@@ -129,6 +151,9 @@ function thisRow(row: Row | undefined): boolean {
       props.ui.scrollbar?.track?.base,
       props.ui.scrollbar?.track?.rounded,
       props.ui.wrapper,
+      props.border.body
+        ? props.ui.border?.body
+        : null,
     ]"
     @scroll="(event) => startTableScroll = handleScroll(event)"
   >
@@ -152,6 +177,9 @@ function thisRow(row: Row | undefined): boolean {
           <th
             v-for="col in currentColumns" :key="col.key"
             :class="[
+              props.border.vertical
+                ? props.ui.border?.vertical
+                : null,
               props.ui.header?.th?.base,
               props.ui.header?.th?.padding,
               props.ui.sticky?.animation,
@@ -214,6 +242,9 @@ function thisRow(row: Row | undefined): boolean {
               props.ui.body?.td?.padding,
               props.border.horizontal
                 ? props.ui.border?.horizontal
+                : null,
+              props.border.vertical
+                ? props.ui.border?.vertical
                 : null,
               thisColumn(col.key) && !(thisColumn(col.key) && thisRow(row))
                 ? hoveredColumnKey === col.key

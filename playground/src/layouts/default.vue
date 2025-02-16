@@ -32,6 +32,7 @@ fonts:
   poppins
   playfair
   robotoCondensed
+  atkinson_hyperlegible_mono
 -->
 
 <template>
@@ -130,6 +131,7 @@ fonts:
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Doto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono&display=swap');
 
 .robotoCondensed {
   font-family: "Roboto Condensed", serif;
@@ -155,5 +157,10 @@ fonts:
   font-optical-sizing: auto;
   font-variation-settings:
     "ROND" 0;
+}
+
+.atkinson_hyperlegible_mono {
+  font-family: "Atkinson Hyperlegible Mono", serif;
+  font-optical-sizing: auto;
 }
 </style>

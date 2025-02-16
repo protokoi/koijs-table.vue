@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Row } from '@koijs/table-vue/dist/types/src/types'
-import KoiTable from '@koijs/table-vue'
+// import KoiTable from '@koijs/table-vue'
 import { onMounted, ref } from 'vue'
+import KoiTable from '../../src/koi-table.vue'
 import Default from './layouts/default.vue'
 
 const rows = ref<Row[]>()
@@ -22,7 +23,23 @@ onMounted(async () => {
       <div class="w-8/12 h-5/6 flex">
         <KoiTable
           :sticky="true"
-          :stripped-rows="true"
+          :zebra-rows="true"
+          :spacing="false"
+          :border="{
+            horizontal: false,
+            vertical: false, //
+          }"
+          :mark="{
+            hover: {
+              row: false,
+              column: false,
+            },
+            select: {
+              row: false,
+              column: true,
+            },
+            spotlight: true,
+          }"
           class="whitespace-nowrap"
           :rows="rows ?? []"
         >

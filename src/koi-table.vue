@@ -1,30 +1,100 @@
 <script setup lang="ts">
-import type { Column, Row } from '#koi/types'
+import type { KoiTable, Row } from '#koi/types'
 import { computed, ref } from 'vue'
 import { generateColumns, getData, handleScroll, processColumns } from './utils'
 
 const props = withDefaults(
-  defineProps<{
-    rows: Row[]
-    columns?: Column[]
-    sticky?: boolean
-    strippedRows?: boolean
-    rowGrapped?: boolean
-    borderX?: boolean
-  }>(),
+  defineProps<KoiTable>(),
   {
     sticky: true,
-    strippedRows: false,
-    rowGrapped: false,
-    borderX: true,
+    zebraRows: false,
+    spacing: false,
+    border: () => ({
+      horizontal: false,
+      vertical: false,
+    }),
+    mark: () => ({
+      hover: {
+        row: true,
+        column: true,
+      },
+      select: {
+        row: true,
+        column: true,
+      },
+      spotlight: true,
+    }),
+    ui: () => ({
+      wrapper: 'w-full relative overflow-x-auto pr-1 rounded-lg',
+      sticky: {
+        animation: 'duration-300',
+        base: 'sticky top-0',
+        header: 'dark:bg-neutral-800/90 bg-neutral-200/90 py-3 first:rounded-l-lg last:rounded-r-lg',
+      },
+      zebraRows: 'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950',
+      spacing: {
+        base: 'border-separate border-spacing-y-2',
+        row: 'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100',
+        shadow: 'shadow',
+      },
+      border: {
+        horizontal: 'border-y border-neutral-300 dark:border-neutral-700',
+        vertical: '',
+      },
+      mark: {
+        hover: {
+          row: 'hover:bg-zinc-200 dark:hover:bg-zinc-800',
+          column: 'bg-zinc-200 dark:bg-zinc-800',
+        },
+        select: {
+          row: 'even:bg-zinc-200 odd:bg-zinc-200 dark:even:bg-zinc-800 dark:odd:bg-zinc-800',
+          column: 'bg-zinc-200 dark:bg-zinc-800',
+        },
+        spotlight: 'bg-zinc-300 dark:bg-zinc-600',
+      },
+      table: {
+        base: 'min-w-full table-fixed',
+      },
+      scrollbar: {
+        base: '[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-2',
+        corner: '[&::-webkit-scrollbar-corner]:bg-transparent',
+        thumb: {
+          base: '[&::-webkit-scrollbar-thumb]:bg-neutral-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500',
+          rounded: '[&::-webkit-scrollbar-thumb]:rounded-lg',
+        },
+        track: {
+          base: '[&::-webkit-scrollbar-track]:bg-neutral-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700',
+          rounded: '[&::-webkit-scrollbar-track]:rounded-lg',
+        },
+      },
+      header: {
+        base: 'select-none',
+        tr: '',
+        th: {
+          base: 'text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap',
+          padding: 'py-1 px-2 first:pl-4 last:pr-4',
+        },
+      },
+      body: {
+        base: '',
+        tr: {
+          base: '',
+          hover: '',
+        },
+        td: {
+          base: 'text-sm',
+          padding: 'px-2 py-4 first:pl-4 last:pr-4',
+        },
+      },
+    }),
   },
 )
 
 const emit
-= defineEmits(['select:row'])
+  = defineEmits(['select:row'])
 
 const currentColumns = computed(() => {
-  if (!props.rows.length) {
+  if (!props.rows?.length) {
     return []
   }
 
@@ -35,58 +105,71 @@ const currentColumns = computed(() => {
     return generateColumns(props.rows)
 })
 
-const startTableScroll = ref<boolean>(false)
 const hoveredRow = ref<Row>()
 const selectedRow = ref<Row>()
 const hoveredColumnKey = ref<string>()
 const selectedColumnKey = ref<string>()
-
-const scrollX = `
-  [&::-webkit-scrollbar]:h-2
-  [&::-webkit-scrollbar-track]:rounded-lg
-  [&::-webkit-scrollbar-track]:bg-neutral-100
-  [&::-webkit-scrollbar-thumb]:rounded-lg
-  [&::-webkit-scrollbar-thumb]:bg-neutral-300
-  dark:[&::-webkit-scrollbar-track]:bg-neutral-800
-  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
-`
-
-const scrollY = (`
-  [&::-webkit-scrollbar]:w-2
-  [&::-webkit-scrollbar-track]:rounded-lg
-  [&::-webkit-scrollbar-track]:bg-neutral-100
-  [&::-webkit-scrollbar-thumb]:rounded-lg
-  [&::-webkit-scrollbar-thumb]:bg-neutral-300
-  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
-  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
-`)
+const startTableScroll = ref<boolean>(false)
+const stickyAnimationIsEmpty = computed(() => props.ui.sticky?.animation === '')
+function thisColumn(key: string): boolean {
+  return hoveredColumnKey.value === key || selectedColumnKey.value === key
+}
+function thisRow(row: Row | undefined): boolean {
+  return hoveredRow.value === row || selectedRow.value === row
+}
 </script>
 
 <template>
   <div
-    class="w-full relative overflow-x-auto pr-1 rounded-lg"
-    :class="[scrollX, scrollY]"
+    :class="[
+      props.ui.scrollbar?.base,
+      props.ui.scrollbar?.corner,
+      props.ui.scrollbar?.thumb?.base,
+      props.ui.scrollbar?.thumb?.rounded,
+      props.ui.scrollbar?.track?.base,
+      props.ui.scrollbar?.track?.rounded,
+      props.ui.wrapper,
+    ]"
     @scroll="(event) => startTableScroll = handleScroll(event)"
   >
     <table
-      class="min-w-full table-fixed"
-      :class="{
-        'border-separate border-spacing-y-2': props.rowGrapped,
-      }"
+      :class="[
+        props.ui.table?.base,
+        props.spacing
+          ? props.ui.spacing?.base
+          : null,
+      ]"
     >
       <thead
-        class="select-none"
-        :class="{ 'sticky top-0 ': props.sticky }"
+        :class="[
+          props.ui.header?.base,
+          props.sticky
+            ? props.ui.sticky?.base
+            : null,
+        ]"
       >
-        <tr>
+        <tr :class="[props.ui.header?.tr]">
           <th
-            v-for="col in currentColumns"
-            :key="col.key"
-            class="duration-300 text-left text-sm font-normal dark:text-neutral-300 text-neutral-700 whitespace-nowrap py-1 px-2 first:pl-4 last:pr-4"
-            :class="{
-              'dark:bg-neutral-800/90 bg-neutral-200/90 py-3 first:rounded-l-lg last:rounded-r-lg': startTableScroll && props.sticky,
-              'bg-neutral-300 dark:bg-neutral-700': hoveredColumnKey === col.key || selectedColumnKey === col.key,
-            }"
+            v-for="col in currentColumns" :key="col.key"
+            :class="[
+              props.ui.header?.th?.base,
+              props.ui.header?.th?.padding,
+              props.ui.sticky?.animation,
+              props.sticky
+                ? startTableScroll || stickyAnimationIsEmpty
+                  ? props.ui.sticky?.header
+                  : null
+                : props.ui.sticky?.header,
+              props.mark.hover?.column
+                ? thisColumn(col.key)
+                  ? hoveredColumnKey === col.key
+                    ? props.mark.hover.column
+                      ? props.ui.mark?.hover?.column
+                      : null
+                    : props.ui.mark?.select?.column
+                  : null
+                : null,
+            ]"
             @mouseenter="hoveredColumnKey = col.key"
             @mouseleave="hoveredColumnKey = undefined"
             @click="selectedColumnKey = selectedColumnKey === col.key ? undefined : col.key"
@@ -97,46 +180,71 @@ const scrollY = (`
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-if="props.rows && props.rows.length > 0" :class="[props.ui.body?.base]">
         <tr
-          v-for="(row, rowIndex) in props.rows"
-          :key="rowIndex"
-          class="duration-300 hover:bg-neutral-200 hover:dark:bg-neutral-800 even:hover:bg-neutral-200 odd:hover:bg-neutral-200 dark:even:hover:bg-neutral-800 dark:odd:hover:bg-neutral-800"
-          :class="{
-            'inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100 shadow': props.rowGrapped && !props.borderX,
-            'shadow': props.rowGrapped && props.borderX,
-            'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950': props.strippedRows && selectedRow !== row,
-            'bg-neutral-200 dark:bg-neutral-800': selectedRow === row,
-            'even:bg-neutral-200 dark:even:bg-neutral-800 odd:bg-neutral-200 dark:odd:bg-neutral-800': props.strippedRows && selectedRow === row,
-          }"
+          v-for="(row, rowIndex) in props.rows" :key="rowIndex"
+          :class="[
+            props.ui.body?.tr?.base,
+            props.mark.hover?.row
+              ? thisRow(row) ? props.ui.mark?.hover?.row : null
+              : null,
+            props.spacing
+              ? props.border.horizontal
+                ? props.ui.spacing?.shadow
+                : [props.ui.spacing?.row, props.ui.spacing?.shadow]
+              : null,
+            props.zebraRows ? props.ui.zebraRows : null,
+            selectedRow === row
+              ? props.mark.select?.row
+                ? props.ui.mark?.select?.row
+                : null
+              : null,
+            hoveredRow === row && props.mark.hover?.row
+              ? props.ui.mark?.hover?.row
+              : null,
+          ]"
           @click="selectedRow = selectedRow === row ? undefined : row"
           @mouseenter="hoveredRow = row"
           @mouseleave="hoveredRow = undefined"
         >
           <td
-            v-for="col in currentColumns"
-            :key="col.key"
-            class="duration-300 px-2 text-sm py-4 first:pl-4 last:pr-4"
-            :class="{
-              'bg-neutral-200 dark:bg-neutral-800': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && !((hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row)),
-              'bg-neutral-300 dark:bg-neutral-700': (hoveredColumnKey === col.key || selectedColumnKey === col.key) && (selectedRow === row || hoveredRow === row),
-              'border-y border-neutral-300 dark:border-neutral-700': props.borderX,
-            }"
+            v-for="col in currentColumns" :key="col.key"
+            :class="[
+              props.ui.body?.td?.base,
+              props.ui.body?.td?.padding,
+              props.border.horizontal
+                ? props.ui.border?.horizontal
+                : null,
+              thisColumn(col.key) && !(thisColumn(col.key) && thisRow(row))
+                ? hoveredColumnKey === col.key
+                  ? props.mark.hover?.column
+                    ? props.ui.mark?.hover?.column
+                    : null
+                  : props.mark.select?.column
+                    ? props.ui.mark?.select?.column
+                    : null
+                : null,
+              props.mark.spotlight
+                ? thisColumn(col.key) && thisRow(row)
+                  ? props.ui.mark?.spotlight
+                  : null
+                : null,
+            ]"
             @click="emit('select:row', (row as Row))"
           >
-            <slot :name="`${col.key}-cell`" :data="row" :column="col">
+            <slot
+              :name="`${col.key}-cell`"
+              :data="row"
+              :column="col"
+            >
               {{ getData(row, col) }}
             </slot>
           </td>
         </tr>
       </tbody>
+      <div v-else>
+        i m so alone
+      </div>
     </table>
   </div>
 </template>
-
-<style>
-@import "tailwindcss";
-::-webkit-scrollbar-corner {
-  background-color: #00000000;
-}
-</style>

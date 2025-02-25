@@ -1,3 +1,5 @@
+<!-- https://raw.githubusercontent.com/protokoi/koijs-table.vue/master/README.md -->
+
 # @koijs/table-vue 🚀
 🌍 [koijs.com](https://koijs.com)
 
@@ -53,7 +55,7 @@ Development is ongoing, but the basic features can be tested. 🛠️
 | sticky     | true            | 📌 Keeps the table header fixed at the top when scrolling, allowing users to track column headers while navigating data. |
 | zebraRows  | true            | 🎨 Alternates row colors to improve readability. |
 | spacing    | true            | 📏 Adds spacing between rows for a more open and readable layout. |
-| size       | `{ xs: { text: 'text-xs' }, sm: { text: 'text-sm' }, md: { text: 'text-md' }, lg: { text: 'text-lg' }, xl: { text: 'text-xl' } }` | 🔠 Defines the text size for the table. |
+| size       | xs, sm, md, lg, xl| 🔠 Defines the text size for the table. |
 | border     | `{ body: false, horizontal: false, vertical: false }` | 🔲 Determines whether borders are displayed inside table cells. |
 | mark       | `{ hover: { row: true, column: false }, select: { row: false, column: false }, spotlight: false }` | ✨ Defines highlighting behavior when hovering or selecting rows and columns. |
 

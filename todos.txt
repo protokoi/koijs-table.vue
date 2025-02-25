@@ -11,30 +11,29 @@
 - [✅] Sticky prop.
 - [✅] Stripped Rows prop.
 - [✅] class' lar için anlaşılabilirliği arttıracak bir yapı oluşturulacak.
-- [ ] Columnlarda hover durumu keye göre spesifik olarak belirtilebilir.
 - [✅] Size propu (xs, sm, md, lg, xl).
-- [ ] Empty state.
 - [✅] Header tıklamalarında sütunun hover moduna girmesi sağlanacak.
 - [✅] Satır Çizgileri.
 - [✅] Sütun Çizgileri.
-- [☕︎] Tasarım bütünlüğünü bozan rounded hatası giderilecek.
 - [✅] Hover anında satırın belirginliğinin arttırılması.
 - [✅] Hover anında olan satır değişikliğinin click anında da olması sağlanacak.
 - [✅] Hover satır ve sütunların kesişiminin belirginleştirilmesi.
 - [✅] `header template` desteği eklenecek.
 - [✅] Seçilen satırın componentten dışarıya emit ile aktarılması sağlanacak.
+- [ ] Tasarım bütünlüğünü bozan rounded hatası giderilecek.
+- [ ] Columnlarda hover durumu keye göre spesifik olarak belirtilebilir.
+- [ ] Empty state.
 - [ ] Seçilen sütunun componentten dışarıya emit ile aktarılması sağlanacak.
 - [ ] ui propu açıldığında sadece düzenlenen verilerin yüklenmemesi sağlanacak.
-- [ ] İsim bulamadığım bu column prop'u eklenecek:
-  - Bu prop aktifken, sadece belirtilen kolonlar varsayılan kolonların üzerine binecek.
+- [ ] İsim bulamadığım bu column prop'u eklenecek: Bu prop aktifken, sadece belirtilen kolonlar varsayılan kolonların üzerine binecek.
 
 ## Playground Geliştirmeleri
 - [ ] Playground sayfasında simülasyon layoutlar yapılacak.
 - [ ] Playground sayfasında simülasyon yazı tipleri yapılacak.
 
 ## Kod Dışı Yapılacaklar
-- [ ] Sandbox proje hazırlanacak.
 - [✅] README yazılacak.
+- [ ] Sandbox proje hazırlanacak.
 - [ ] Döküman sayfası hazırlanacak.
 - [ ] Döküman sayfası için showcase tarzında örnek tablolar hazırlanacak.
 

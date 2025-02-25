@@ -1,114 +1,142 @@
-# @koijs/table-vue
+# @koijs/table-vue 🚀
 
-A lightweight and customizable table component for Vue 3 applications. This package allows you to render data-driven tables with ease, supporting dynamic columns and rows.
+**This is an alpha release.** ⚠️
 
-## Features
+`@koijs/table-vue` is a highly customizable and lightweight table component designed for Vue.js. It provides built-in features like sticky headers, zebra rows, and flexible sizing, making it an ideal choice for data-heavy applications. This package aims to be a simple yet powerful alternative to existing table components.
 
-- Dynamic column and row rendering
-- Lightweight and performant
-- Modular architecture
-- Fully customizable with CSS
-- TypeScript support
+## 📦 Installation
 
----
+You can install the alpha version using the following command:
 
-## Installation
-
-You can install the package via npm:
-
-```bash
+```sh
 npm install @koijs/table-vue
 ```
 
----
+## 🚀 Usage
 
-## Usage
+Here is a demonstration of `@koijs/table-vue` in action:
 
-### Basic Example
+![Demo GIF](docs/table.gif)
 
-Import the `KoiTable` component and use it in your Vue application:
+Here is a basic example of how to use `@koijs/table-vue` in your Vue project:
 
 ```vue
-<script setup lang="ts">
+<script setup>
 import KoiTable from '@koijs/table-vue'
-import '@koijs/table-vue/dist/table-vue.css'
+import { ref } from 'vue'
 
-const columns = ['id', 'name', 'age', 'country']
-
-const data = [
-  { id: 1, name: 'Atlas', age: 25, country: 'Turkey' },
-  { id: 2, name: 'Noah', age: 30, country: 'Netherlands' },
-  { id: 3, name: 'John', age: 28, country: 'USA' },
-  { id: 4, name: 'Emma', age: 22, country: 'Canada' },
-  { id: 5, name: 'Liam', age: 35, country: 'Australia' },
-  { id: 6, name: 'Sophia', age: 27, country: 'UK' },
-  { id: 7, name: 'Lucas', age: 31, country: 'Germany' },
-]
+const tableData = ref([
+  { id: 1, name: 'Alice', age: 25 },
+  { id: 2, name: 'Bob', age: 30 },
+  { id: 3, name: 'Charlie', age: 35 }
+])
 </script>
 
 <template>
-  <div>
-    <h1>Koi Table Example</h1>
-    <KoiTable :columns="columns" :data="data" />
-  </div>
+  <KoiTable
+    :rows="tableData"
+    class="whitespace-nowrap"
+  />
 </template>
 ```
 
----
+Development is ongoing, but the basic features can be tested. 🛠️
 
-## Props
+## ⚙️ Props
 
-| Prop      | Type    | Required | Default | Description                                                         |
-| --------- | ------- | -------- | ------- | ------------------------------------------------------------------- |
-| `columns` | `Array` | Yes      | `[]`    | Defines table columns. Each column should have a `key` and `title`. |
-| `data`    | `Array` | Yes      | `[]`    | Array of objects representing rows in the table.                    |
+| Prop       | Default Value   | Description |
+|------------|-----------------|-------------|
+| sticky     | true            | 📌 Keeps the table header fixed at the top when scrolling, allowing users to track column headers while navigating data. |
+| zebraRows  | true            | 🎨 Alternates row colors to improve readability. |
+| spacing    | true            | 📏 Adds spacing between rows for a more open and readable layout. |
+| size       | `{ xs: { text: 'text-xs' }, sm: { text: 'text-sm' }, md: { text: 'text-md' }, lg: { text: 'text-lg' }, xl: { text: 'text-xl' } }` | 🔠 Defines the text size for the table. |
+| border     | `{ body: false, horizontal: false, vertical: false }` | 🔲 Determines whether borders are displayed inside table cells. |
+| mark       | `{ hover: { row: true, column: false }, select: { row: false, column: false }, spotlight: false }` | ✨ Defines highlighting behavior when hovering or selecting rows and columns. |
 
----
+## ⚙️ Slots
 
-<!--
-## Example with Custom Styles
+| Slot       | Return   | Description |
+|------------|-----------------|-------------|
+| `<data-key>-cell`      | column, data            | 🎨  Allows customization of individual table cells. The column parameter provides column-specific information, while data holds the corresponding row data. Useful for formatting or applying conditional styling. |
+| `<column-key>-header`  | column            | 📌 Enables customization of table headers. The column parameter contains the header label, allowing modifications such as icons, tooltips, or additional styling. |
 
-You can apply custom styles by overriding the default CSS classes:
+## 🎨 UI (prop)
 
-```css
+```json
+{
+  "wrapper": "w-full relative overflow-x-auto pr-1 rounded-lg dark:text-white text-black",
+  "sticky": {
+    "animation": "duration-300",
+    "base": "sticky top-0",
+    "header": "dark:bg-neutral-800/90 bg-neutral-200/90 py-3 first:rounded-l-lg last:rounded-r-lg"
+  },
+  "zebraRows": "even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950",
+  "spacing": {
+    "base": "border-separate border-spacing-y-2",
+    "row": "inset-ring dark:inset-ring-neutral-900 inset-ring-neutral-100",
+    "shadow": "shadow",
+    "rounded": "rounded-lg"
+  },
+  "border": {
+    "body": "ring ring-neutral-300 dark:ring-neutral-700",
+    "horizontal": "border-y border-neutral-300 dark:border-neutral-700",
+    "vertical": "border-x border-neutral-300 dark:border-neutral-700"
+  },
+  "size": {
+    "xs": { "text": "text-xs" },
+    "sm": { "text": "text-sm" },
+    "md": { "text": "text-md" },
+    "lg": { "text": "text-lg" },
+    "xl": { "text": "text-xl" }
+  },
+  "mark": {
+    "hover": {
+      "row": "hover:bg-zinc-200 dark:hover:bg-zinc-800",
+      "column": "bg-zinc-200 dark:bg-zinc-800"
+    },
+    "select": {
+      "row": "even:bg-zinc-200 odd:bg-zinc-200 dark:even:bg-zinc-800 dark:odd:bg-zinc-800",
+      "column": "bg-zinc-200 dark:bg-zinc-800"
+    },
+    "spotlight": "bg-zinc-300 dark:bg-zinc-600"
+  },
+  "table": {
+    "base": "min-w-full table-fixed"
+  },
+  "scrollbar": {
+    "base": "[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-2",
+    "corner": "[&::-webkit-scrollbar-corner]:bg-transparent",
+    "thumb": {
+      "base": "[&::-webkit-scrollbar-thumb]:bg-neutral-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500",
+      "rounded": "[&::-webkit-scrollbar-thumb]:rounded-lg"
+    },
+    "track": {
+      "base": "[&::-webkit-scrollbar-track]:bg-neutral-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700",
+      "rounded": "[&::-webkit-scrollbar-track]:rounded-lg"
+    }
+  },
+  "header": {
+    "base": "select-none",
+    "tr": "",
+    "th": {
+      "base": "text-left font-normal dark:text-neutral-200 text-neutral-800 whitespace-nowrap",
+      "padding": "py-1 px-2 first:pl-4 last:pr-4"
+    }
+  },
+  "body": {
+    "base": "",
+    "tr": {
+      "base": "",
+      "hover": ""
+    },
+    "td": {
+      "base": "",
+      "padding": "px-2 py-4 first:pl-4 last:pr-4"
+    }
+  }
+}
 ```
--->
 
----
+## ℹ️ More Information
 
-## Development
-
-To contribute or test locally:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/atlasyigitaydin/koijs-table
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Run the playground:
-   ```bash
-   npm run dev
-   ```
-
----
-
-## Build
-
-To build the project:
-
-```bash
-npm run build
-```
-
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+For more details and updates, visit [koijs.com](https://koijs.com). 🌍

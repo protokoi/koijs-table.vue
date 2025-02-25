@@ -9,10 +9,10 @@ const rows = ref<Row[]>()
 // const selectedRow = ref<Row>()
 
 onMounted(async () => {
-  await fetch('https://dummyjson.com/todos')
+  await fetch('https://dummyjson.com/users')
     .then(res => res.json())
     .then((data) => {
-      rows.value = data.todos
+      rows.value = data.users
     })
 })
 </script>
@@ -21,7 +21,22 @@ onMounted(async () => {
   <Default>
     <div class="w-full h-full flex justify-center items-center">
       <div class="w-8/12 h-5/6 flex">
-        <KoiTable :rows="rows ?? []" />
+        <KoiTable
+          :rows="rows ?? []"
+          :spacing="false"
+          class="whitespace-nowrap"
+          :mark="{
+            hover:
+              { row: true, column: true },
+            select:
+              { row: true, column: true },
+            spotlight: true,
+          }"
+        >
+          <template #image-cell="{ data }">
+            <img :src="data.image">
+          </template>
+        </KoiTable>
       </div>
     </div>
   </Default>

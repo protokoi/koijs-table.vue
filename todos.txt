@@ -34,7 +34,7 @@
 
 ## Kod Dışı Yapılacaklar
 - [ ] Sandbox proje hazırlanacak.
-- [ ] README yazılacak.
+- [✅] README yazılacak.
 - [ ] Döküman sayfası hazırlanacak.
 - [ ] Döküman sayfası için showcase tarzında örnek tablolar hazırlanacak.
 

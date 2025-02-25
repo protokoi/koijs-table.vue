@@ -1,8 +1,12 @@
 # @koijs/table-vue 🚀
+🌍 [koijs.com](https://koijs.com)
 
 **This is an alpha release.** ⚠️
 
-`@koijs/table-vue` is a highly customizable and lightweight table component designed for Vue.js. It provides built-in features like sticky headers, zebra rows, and flexible sizing, making it an ideal choice for data-heavy applications. This package aims to be a simple yet powerful alternative to existing table components.
+`@koijs/table-vue` is a highly customizable and lightweight table component designed for Vue.js. It provides built-in features like sticky headers, zebra rows, and flexible sizing, making it an ideal choice for data-heavy applications. This package automatically generates table headers based on the provided data, eliminating the need for manual header definitions and ensuring a seamless experience. It is currently under development but is available as an alpha release.
+
+## ⛓️‍💥 Dependencies
+ - [tailwindcss v4.0](https://tailwindcss.com/)
 
 ## 📦 Installation
 
@@ -52,13 +56,6 @@ Development is ongoing, but the basic features can be tested. 🛠️
 | size       | `{ xs: { text: 'text-xs' }, sm: { text: 'text-sm' }, md: { text: 'text-md' }, lg: { text: 'text-lg' }, xl: { text: 'text-xl' } }` | 🔠 Defines the text size for the table. |
 | border     | `{ body: false, horizontal: false, vertical: false }` | 🔲 Determines whether borders are displayed inside table cells. |
 | mark       | `{ hover: { row: true, column: false }, select: { row: false, column: false }, spotlight: false }` | ✨ Defines highlighting behavior when hovering or selecting rows and columns. |
-
-## ⚙️ Slots
-
-| Slot       | Return   | Description |
-|------------|-----------------|-------------|
-| `<data-key>-cell`      | column, data            | 🎨  Allows customization of individual table cells. The column parameter provides column-specific information, while data holds the corresponding row data. Useful for formatting or applying conditional styling. |
-| `<column-key>-header`  | column            | 📌 Enables customization of table headers. The column parameter contains the header label, allowing modifications such as icons, tooltips, or additional styling. |
 
 ## 🎨 UI (prop)
 
@@ -137,6 +134,20 @@ Development is ongoing, but the basic features can be tested. 🛠️
 }
 ```
 
-## ℹ️ More Information
+## ⚙️ Slots
+
+| Slot       | Return   | Description |
+|------------|-----------------|-------------|
+| `<data-key>-cell`      | column, data            | 🎨  Allows customization of individual table cells. The column parameter provides column-specific information, while data holds the corresponding row data. Useful for formatting or applying conditional styling. |
+| `<column-key>-header`  | column            | 📌 Enables customization of table headers. The column parameter contains the header label, allowing modifications such as icons, tooltips, or additional styling. |
+
+## 💡 Support & Contributions
+
+If you would like to support the project, report issues, or contribute, here are some ways you can help:
+
+- ⭐ **Star the repository**: Show your support by starring the project on [GitHub](https://github.com/protokoi/koijs-table.vue).
+- 🚀 **Feature Requests**: Have an idea for improvement? Submit your feature requests as an [issue](https://github.com/protokoi/koijs-table.vue/issues).
+
+Your contributions and feedback help make `@koijs/table-vue` better! 💙
 
 For more details and updates, visit [koijs.com](https://koijs.com). 🌍

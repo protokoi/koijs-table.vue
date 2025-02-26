@@ -22,7 +22,7 @@ npm install @koijs/table-vue
 
 Here is a demonstration of `@koijs/table-vue` in action:
 
-![Demo GIF](docs/table.gif)
+![Demo GIF](https://raw.githubusercontent.com/protokoi/koijs-table.vue/refs/heads/master/docs/table.gif)
 
 Here is a basic example of how to use `@koijs/table-vue` in your Vue project:
 
@@ -154,4 +154,4 @@ Your contributions and feedback help make `@koijs/table-vue` better! 💙
 
 For more details and updates, visit [koijs.com](https://koijs.com). 🌍
 
-**Made by [protokoi](https://protokoi.com)**
+**Made by [protokoi](https://protokoi.com) 🐟**

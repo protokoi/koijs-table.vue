@@ -153,3 +153,5 @@ If you would like to support the project, report issues, or contribute, here are
 Your contributions and feedback help make `@koijs/table-vue` better! 💙
 
 For more details and updates, visit [koijs.com](https://koijs.com). 🌍
+
+**Made by [protokoi](https://protokoi.com)**

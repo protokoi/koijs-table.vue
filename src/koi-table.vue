@@ -2,6 +2,7 @@
 import type { KoiTable, Row } from '#koi/types'
 import { computed, ref } from 'vue'
 import { generateColumns, getData, handleScroll, processColumns } from './utils'
+import 'tailwindcss'
 
 const props = withDefaults(
   defineProps<KoiTable>(),
@@ -155,7 +156,7 @@ function thisRow(row: Row | undefined): boolean {
         ? props.ui.border?.body
         : null,
     ]"
-    @scroll="(event) => startTableScroll = handleScroll(event)"
+    @scroll="(event: any) => startTableScroll = handleScroll(event)"
   >
     <table
       :class="[

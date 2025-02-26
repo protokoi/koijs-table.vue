@@ -8,10 +8,10 @@ import Default from './layouts/default.vue'
 const rows = ref<[]>()
 
 onMounted(async () => {
-  await fetch('https://dummyjson.com/todos')
+  await fetch('https://dummyjson.com/users')
     .then(res => res.json())
     .then((data) => {
-      rows.value = data.todos
+      rows.value = data.users
     })
 })
 </script>

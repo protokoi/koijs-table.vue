@@ -2,7 +2,6 @@
 import type { KoiTable, Row } from '#koi/types'
 import { computed, ref } from 'vue'
 import { generateColumns, getData, handleScroll, processColumns } from './utils'
-import 'tailwindcss'
 
 const props = withDefaults(
   defineProps<KoiTable>(),
@@ -112,8 +111,7 @@ const props = withDefaults(
   },
 )
 
-const emit
-  = defineEmits(['select:row'])
+const emit = defineEmits(['select:row'])
 
 const currentColumns = computed(() => {
   if (!props.rows?.length) {

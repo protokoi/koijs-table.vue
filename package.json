@@ -17,11 +17,10 @@
     "build": "vite build && npm run build:types"
   },
   "peerDependencies": {
+    "tailwindcss": "^4.0.5",
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.0.9",
-    "tailwindcss": "^4.0.5",
     "vue": "^3.0.0"
   },
   "devDependencies": {

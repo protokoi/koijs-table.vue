@@ -22,15 +22,8 @@ onMounted(async () => {
       <div class="w-8/12 h-5/6 flex">
         <KoiTable
           :rows="rows ?? []"
-          :spacing="false"
           class="whitespace-nowrap"
-          :mark="{
-            hover:
-              { row: true, column: true },
-            select:
-              { row: true, column: true },
-            spotlight: true,
-          }"
+          :spacing="false"
         >
           <template #image-cell="{ data }">
             <img :src="data.image">

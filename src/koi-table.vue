@@ -2,6 +2,7 @@
 import type { KoiTable, Row } from '#koi/types'
 import { computed, ref } from 'vue'
 import { generateColumns, getData, handleScroll, processColumns } from './utils'
+import 'tailwindcss'
 
 const props = withDefaults(
   defineProps<KoiTable>(),
@@ -272,9 +273,9 @@ function thisRow(row: Row | undefined): boolean {
           </td>
         </tr>
       </tbody>
-      <div v-else>
+      <!-- <div v-else>
         i m so alone
-      </div>
+      </div> -->
     </table>
   </div>
 </template>

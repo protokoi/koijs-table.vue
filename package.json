@@ -5,23 +5,27 @@
   "main": "dist/koi-table.es.js",
   "module": "dist/koi-table.es.js",
   "types": "dist/types/index.d.ts",
+  "style": "dist/style.css",
   "files": [
-    "README.md",
     "dist",
-    "package.json"
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/style.css"
   ],
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "build": "vite build && npm run build:types && npm run build:css",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
-    "build": "vite build && npm run build:types"
+    "build:css": "tailwindcss -i ./src/main.css -o ./dist/style.css"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "tailwind-merge": "^3.0.2",
-    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.12",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.12",
     "vue": "^3.0.0"
   },
   "devDependencies": {

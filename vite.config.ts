@@ -13,7 +13,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: 'src/koi-table.vue',
+      entry: './src/index.ts',
       name: 'KoiTable',
       fileName: format => `koi-table.${format}.js`,
     },

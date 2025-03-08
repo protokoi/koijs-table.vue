@@ -11,12 +11,12 @@
     "types": ["node"],
     "strict": true,
     "declaration": true,
-    "declarationDir": "./dist/types",
+    "declarationDir": "./dist/",
     "emitDeclarationOnly": false,
-    "outDir": "./dist",
+    "outDir": "./",
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "index.ts"],
+  "include": ["src/types.ts", "index.ts"],
   "exclude": ["node_modules", "dist"]
 }

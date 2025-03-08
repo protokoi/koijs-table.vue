@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import KoiTable from '@koijs/table-vue'
 // import type { Row } from '@koijs/table-vue/dist/types/src/types'
 import { onMounted, ref } from 'vue'
-// import KoiTable from '@koijs/table-vue'
-import KoiTable from '../../src/koi-table.vue'
+// import KoiTable from '../../src/koi-table.vue'
 import Default from './layouts/default.vue'
+import '../node_modules/@koijs/table-vue/dist/table-vue.css'
 
 const rows = ref<[]>()
 
@@ -24,7 +25,6 @@ onMounted(async () => {
           :rows="rows ?? []"
           class="whitespace-nowrap"
           :spacing="false"
-         
         >
           <template #image-cell="{ data }">
             <img :src="data.image">

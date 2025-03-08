@@ -1,11 +1,20 @@
 {
   "name": "@koijs/table-vue",
+  "type": "module",
   "version": "0.0.7",
   "description": "A lightweight table component for Vue",
+  "exports": {
+    ".": {
+      "types": "./dist/types/types.d.ts",
+      "style": "./dist/table-vue.css",
+      "import": "./dist/koi-table.es.js",
+      "require": "./dist/koi-table.cjs.js"
+    }
+  },
   "main": "dist/koi-table.es.js",
   "module": "dist/koi-table.es.js",
-  "types": "dist/types/index.d.ts",
-  "style": "dist/style.css",
+  "types": "dist/types/types.d.ts",
+  "style": "dist/table-vue.css",
   "files": [
     "dist",
     "dist/index.d.ts",
@@ -15,24 +24,23 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build": "vite build && npm run build:types && npm run build:css",
-    "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
-    "build:css": "tailwindcss -i ./src/main.css -o ./dist/style.css"
+    "build": "vite build && npm run build:types",
+    "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types"
   },
   "peerDependencies": {
+    "tailwindcss": "^4.0.0",
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.0.12",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.12",
     "vue": "^3.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.1",
+    "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.13.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "eslint": "^9.20.0",
+    "postcss": "^8.5.3",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
     "vue-tsc": "^2.2.0"

@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import type { Column, Row } from '@koijs/table-vue'
 import KoiTable from '@koijs/table-vue'
-// import type { Row } from '@koijs/table-vue/dist/types/src/types'
 import { onMounted, ref } from 'vue'
-// import KoiTable from '../../src/koi-table.vue'
 import Default from './layouts/default.vue'
-import '../node_modules/@koijs/table-vue/dist/table-vue.css'
+// import '../node_modules/@koijs/table-vue/dist/table-vue.css'
 
-const rows = ref<[]>()
+const rows = ref<Row[]>()
+const columns = ref<Column[]>([])
+columns.value = []
 
 onMounted(async () => {
   await fetch('https://dummyjson.com/users')

@@ -6,17 +6,20 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "#koi/*": ["src/*"]
+      "#koijs/types": ["./dist/types.d.ts"]
     },
     "types": ["node"],
     "strict": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
     "declaration": true,
-    "declarationDir": "./dist/types",
+    "declarationDir": "./dist/",
+    "declarationMap": true,
     "emitDeclarationOnly": false,
     "outDir": "./dist",
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "index.ts"],
+  "include": ["src/types.ts", "index.ts"],
   "exclude": ["node_modules", "dist"]
 }

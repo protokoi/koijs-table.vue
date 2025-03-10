@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Column, Row } from '@koijs/table-vue'
+import type { Column, Row } from '@koijs/table-vue/types'
 import KoiTable from '@koijs/table-vue'
 import { onMounted, ref } from 'vue'
+// import KoiTable from '../../src/koi-table.vue'
 import Default from './layouts/default.vue'
-// import '../node_modules/@koijs/table-vue/dist/table-vue.css'
+import '../node_modules/@koijs/table-vue/dist/table-vue.css'
 
-const rows = ref<Row[]>()
+const rows = ref<Row[]>([])
 const columns = ref<Column[]>([])
 columns.value = []
 
@@ -21,9 +22,10 @@ onMounted(async () => {
 <template>
   <Default>
     <div class="w-full h-full flex justify-center items-center">
-      <div class="w-8/12 h-5/6 flex">
+      <div class="w-5/12 h-3/6 flex">
         <KoiTable
           :rows="rows ?? []"
+          size="xs"
           class="whitespace-nowrap"
           :spacing="false"
         >

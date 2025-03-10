@@ -1,13 +1,4 @@
-export interface Row {
-  [key: string]: any
-}
-
-export interface Column {
-  key: string
-  label?: string
-}
-
-export interface KoiTable {
+export interface Table {
   rows: Row[] | undefined | null
   columns?: Column[]
   sticky?: boolean
@@ -18,7 +9,7 @@ export interface KoiTable {
     horizontal?: boolean
     vertical?: boolean
   }
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  size?: Size
   mark?: {
     hover?: {
       row?: boolean
@@ -30,86 +21,99 @@ export interface KoiTable {
     }
     spotlight?: boolean
   }
-  ui?: {
-    size?: {
-      xs?: {
-        text: string
-      }
-      sm?: {
-        text: string
-      }
-      md?: {
-        text: string
-      }
-      lg?: {
-        text: string
-      }
-      xl?: {
-        text: string
-      }
+  ui?: Ui
+}
+
+export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+export interface Row {
+  [key: string]: any
+}
+
+export interface Column {
+  key: string
+  label?: string
+}
+
+export interface Ui {
+  size?: {
+    xs?: {
+      text: string
     }
-    wrapper?: string
-    sticky?: {
-      animation?: string
-      base?: string
-      header?: string
+    sm?: {
+      text: string
     }
-    zebraRows?: string
-    spacing?: {
-      base?: string
+    md?: {
+      text: string
+    }
+    lg?: {
+      text: string
+    }
+    xl?: {
+      text: string
+    }
+  }
+  wrapper?: string
+  sticky?: {
+    animation?: string
+    base?: string
+    header?: string
+  }
+  zebraRows?: string
+  spacing?: {
+    base?: string
+    row?: string
+    shadow?: string
+    rounded?: string
+  }
+  mark?: {
+    hover?: {
       row?: string
-      shadow?: string
+      column?: string
+    }
+    select?: {
+      row?: string
+      column?: string
+    }
+    spotlight?: string
+  }
+  border?: {
+    body?: string
+    horizontal?: string
+    vertical?: string
+  }
+  table?: {
+    base?: string
+  }
+  scrollbar?: {
+    base?: string
+    corner?: string
+    thumb?: {
+      base?: string
       rounded?: string
     }
-    mark?: {
-      hover?: {
-        row?: string
-        column?: string
-      }
-      select?: {
-        row?: string
-        column?: string
-      }
-      spotlight?: string
-    }
-    border?: {
-      body?: string
-      horizontal?: string
-      vertical?: string
-    }
-    table?: {
+    track?: {
       base?: string
+      rounded?: string
     }
-    scrollbar?: {
+  }
+  header?: {
+    base?: string
+    tr?: string
+    th?: {
       base?: string
-      corner?: string
-      thumb?: {
-        base?: string
-        rounded?: string
-      }
-      track?: {
-        base?: string
-        rounded?: string
-      }
+      padding?: string
     }
-    header?: {
+  }
+  body?: {
+    base?: string
+    tr?: {
       base?: string
-      tr?: string
-      th?: {
-        base?: string
-        padding?: string
-      }
+      hover?: string
     }
-    body?: {
+    td?: {
       base?: string
-      tr?: {
-        base?: string
-        hover?: string
-      }
-      td?: {
-        base?: string
-        padding?: string
-      }
+      padding?: string
     }
   }
 }

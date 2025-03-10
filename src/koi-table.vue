@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { KoiTable, Row } from './types'
+import type { Row, Table } from './types'
 import { computed, ref } from 'vue'
 import ui from './ui'
 import { generateColumns, getData, handleScroll, processColumns } from './utils'
 
 const props = withDefaults(
-  defineProps<KoiTable>(),
+  defineProps<Table>(),
   {
     sticky: true,
     zebraRows: true,

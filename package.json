@@ -3,23 +3,27 @@
   "type": "module",
   "version": "0.0.7",
   "description": "A lightweight table component for Vue",
+  "sideEffects": [
+    "dist/table-vue.css"
+  ],
   "exports": {
     ".": {
-      "types": "./dist/types/types.d.ts",
-      "style": "./dist/table-vue.css",
       "import": "./dist/koi-table.es.js",
-      "require": "./dist/koi-table.cjs.js"
+      "require": "./dist/koi-table.umd.js",
+      "default": "./dist/koi-table.es.js"
+    },
+    "./types": {
+      "default": "./dist/types/types.d.ts"
     }
   },
+  "imports": {
+    "#koijs/types": "./dist/types.d.ts"
+  },
   "main": "dist/koi-table.es.js",
-  "module": "dist/koi-table.es.js",
   "types": "dist/types/types.d.ts",
   "style": "dist/table-vue.css",
   "files": [
-    "dist",
-    "dist/index.d.ts",
-    "dist/index.js",
-    "dist/style.css"
+    "dist"
   ],
   "scripts": {
     "lint": "eslint .",

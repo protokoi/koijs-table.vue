@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "npm i && npm i ../koijs-table-vue-0.0.7.tgz && npm run dev"
   },
   "dependencies": {
     "@koijs/table-vue": "file:../koijs-table-vue-0.0.7.tgz",

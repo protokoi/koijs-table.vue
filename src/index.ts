@@ -1,7 +1,4 @@
 import KoiTable from './koi-table.vue'
-import './style.css'
-// import './ui'
+import './ui.css'
 
 export default KoiTable
-
-// export * from './types'

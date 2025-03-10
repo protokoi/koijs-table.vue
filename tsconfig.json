@@ -10,6 +10,8 @@
     },
     "types": ["node"],
     "strict": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
     "declaration": true,
     "declarationDir": "./dist/",
     "declarationMap": true,

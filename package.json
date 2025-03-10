@@ -3,25 +3,17 @@
   "type": "module",
   "version": "0.0.7",
   "description": "A lightweight table component for Vue",
-  "sideEffects": [
-    "dist/table-vue.css"
-  ],
   "exports": {
     ".": {
-      "import": "./dist/koi-table.es.js",
-      "require": "./dist/koi-table.umd.js",
       "default": "./dist/koi-table.es.js"
+    },
+    "./ui": {
+      "default": "./dist/ui.css"
     },
     "./types": {
       "default": "./dist/types/types.d.ts"
     }
   },
-  "imports": {
-    "#koijs/types": "./dist/types.d.ts"
-  },
-  "main": "dist/koi-table.es.js",
-  "types": "dist/types/types.d.ts",
-  "style": "dist/table-vue.css",
   "files": [
     "dist"
   ],
@@ -29,7 +21,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "vite build && npm run build:types",
-    "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types"
+    "build:types": "vue-tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
+    "test": "npm i && vite build && npm run build:types && npm pack"
   },
   "peerDependencies": {
     "tailwindcss": "^4.0.0",

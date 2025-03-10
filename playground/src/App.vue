@@ -4,7 +4,7 @@ import KoiTable from '@koijs/table-vue'
 import { onMounted, ref } from 'vue'
 // import KoiTable from '../../src/koi-table.vue'
 import Default from './layouts/default.vue'
-import '../node_modules/@koijs/table-vue/dist/table-vue.css'
+// import '../node_modules/@koijs/table-vue/dist/table-vue.css'
 
 const rows = ref<Row[]>([])
 const columns = ref<Column[]>([])

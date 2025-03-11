@@ -4,15 +4,9 @@
   "version": "0.0.7",
   "description": "A lightweight table component for Vue",
   "exports": {
-    ".": {
-      "default": "./dist/koi-table.es.js"
-    },
-    "./ui": {
-      "default": "./dist/ui.css"
-    },
-    "./types": {
-      "default": "./dist/types/types.d.ts"
-    }
+    ".": "./dist/koi-table.es.js",
+    "./types": "./dist/types/types.d.ts",
+    "./ui": "./dist/ui.css"
   },
   "files": [
     "dist"

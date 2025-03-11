@@ -3,6 +3,36 @@
   "type": "module",
   "version": "0.0.7",
   "description": "A lightweight table component for Vue",
+  "author": {
+    "name": "Atlas Yiğit Aydın",
+    "email": "atlasyigitaydin@gmail.com",
+    "url": "https://atlasyigitaydin.com/"
+  },
+  "license": "MIT",
+  "homepage": "https://koijs.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/protokoi/koijs-table.vue"
+  },
+  "bugs": {
+    "url": "https://github.com/protokoi/koijs-table.vue/issues",
+    "email": "atlasyigitaydin@gmail.com"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "vuejs",
+    "vue.js",
+    "nuxt",
+    "tailwind",
+    "tailwindcss",
+    "vue-components",
+    "component",
+    "typescript",
+    "ui",
+    "table",
+    "data-table"
+  ],
   "exports": {
     ".": "./dist/koi-table.es.js",
     "./types": "./dist/types/types.d.ts",

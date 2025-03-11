@@ -37,13 +37,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="dark:bg-black w-screen h-screen flex justify-center items-center rubik">
+  <div class="dark:bg-black w-screen h-screen flex justify-center items-center">
     <div class="w-8/12 h-4/6 flex">
       <KoiTable
         :rows="rows ?? []"
-        size="sm"
-        :zebra-rows="true"
         class="whitespace-nowrap"
+        zebra-rows
+        :border="{
+          body: true,
+          horizontal: true,
+          vertical: false,
+        }"
         :spacing="false"
       >
         <template #image-cell="{ data }">

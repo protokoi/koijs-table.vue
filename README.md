@@ -27,23 +27,22 @@ Here is a demonstration of `@koijs/table-vue` in action:
 Here is a basic example of how to use `@koijs/table-vue` in your Vue project:
 
 ```vue
-<script setup>
+<script setup lang="ts">
+import type { Row } from '@koijs/table-vue/types'
 import KoiTable from '@koijs/table-vue'
 import { ref } from 'vue'
+import { sampleData } from './sampleData'
 
-const tableData = ref([
-  { id: 1, name: 'Alice', age: 25 },
-  { id: 2, name: 'Bob', age: 30 },
-  { id: 3, name: 'Charlie', age: 35 }
-])
+const tableData = ref<Row[]>(sampleData)
 </script>
 
 <template>
-  <KoiTable
-    :rows="tableData"
-    class="whitespace-nowrap"
-  />
+  <KoiTable :rows="tableData" />
 </template>
+
+<style>
+@import '@koijs/table-vue/ui';
+</style>
 ```
 
 Development is ongoing, but the basic features can be tested. 🛠️

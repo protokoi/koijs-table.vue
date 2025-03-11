@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Column, Row } from '@koijs/table-vue/types'
-import KoiTable from '@koijs/table-vue'
 import { onMounted, ref } from 'vue'
+// import KoiTable from '@koijs/table-vue'
+import KoiTable from '../../src/koi-table.vue'
 
 const rows = ref<Row[]>([])
 const columns = ref<Column[]>([])
@@ -37,21 +38,25 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="dark:bg-black w-screen h-screen flex justify-center items-center">
-    <div class="w-8/12 h-4/6 flex">
+  <div class="dark:bg-black bg-white  w-screen h-screen flex justify-center items-center rubik">
+    <div class="lg:w-8/12 w-full lg:h-4/6 h-full flex">
       <KoiTable
         :rows="rows ?? []"
         class="whitespace-nowrap"
-        zebra-rows
-        :border="{
-          body: true,
-          horizontal: true,
-          vertical: false,
-        }"
         :spacing="false"
       >
         <template #image-cell="{ data }">
           <img :src="data.image">
+        </template>
+        <template #completed-cell="{ data }">
+          <div class="w-16 justify-center flex">
+            <div
+              class="w-2 h-2 rounded-full" :class="{
+                'bg-green-400': data.completed,
+                'bg-red-400': !data.completed,
+              }"
+            />
+          </div>
         </template>
       </KoiTable>
     </div>

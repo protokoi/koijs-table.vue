@@ -1,7 +1,7 @@
 {
   "name": "@koijs/table-vue",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A lightweight table component for Vue",
   "author": {
     "name": "Atlas Yiğit Aydın",

@@ -13,19 +13,19 @@ export default defineConfig({
   // },
   build: {
     lib: {
-      entry: './src/index.ts',
+      entry: './src/koi-table.vue',
       name: 'KoiTable',
-      fileName: format => `koi-table.${format}.js`,
+      fileName: format => `koi-table.${format}.ts`,
       formats: ['es', 'cjs'],
       cssFileName: 'ui',
     },
     rollupOptions: {
       external: ['vue'],
-      // output: {
-      //   globals: {
-      //     vue: 'Vue',
-      //   },
-      // },
+      output: {
+        globals: {
+          vue: 'Vue',
+        },
+      },
     },
   },
 })

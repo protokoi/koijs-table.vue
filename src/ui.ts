@@ -3,7 +3,7 @@ export default {
   sticky: {
     animation: 'duration-300',
     base: 'sticky top-0',
-    header: 'dark:bg-neutral-800/90 bg-neutral-200/90 py-3 first:rounded-l-lg last:rounded-r-lg',
+    header: 'dark:bg-neutral-800/95 bg-neutral-200/95 py-3 first:rounded-l-lg last:rounded-r-lg',
   },
   zebraRows: 'even:bg-neutral-100 odd:bg-white dark:even:bg-neutral-900 dark:odd:bg-neutral-950',
   spacing: {
@@ -64,7 +64,7 @@ export default {
     base: 'select-none',
     tr: '',
     th: {
-      base: 'text-left font-normal dark:text-neutral-200 text-neutral-800 whitespace-nowrap',
+      base: 'text-left font-semibold dark:text-neutral-200 text-neutral-800 whitespace-nowrap',
       padding: 'py-1 px-2 first:pl-4 last:pr-4',
     },
   },
